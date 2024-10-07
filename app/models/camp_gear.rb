@@ -1,0 +1,2 @@
+class CampGear < ApplicationRecord
+end

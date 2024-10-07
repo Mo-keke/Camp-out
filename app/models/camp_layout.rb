@@ -1,0 +1,2 @@
+class CampLayout < ApplicationRecord
+end

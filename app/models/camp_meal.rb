@@ -1,0 +1,2 @@
+class CampMeal < ApplicationRecord
+end
