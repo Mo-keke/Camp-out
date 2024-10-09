@@ -5,11 +5,11 @@ class Public::UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(current_user.id)
+    @user = current_user
   end
 
   def update
-    @user = User.find(current_user.id)
+    @user = current_user
     if @user.update(user_params)
       flash[:success] = "変更が正常に保存されました。"
       redirect_to mypage_path
@@ -19,8 +19,8 @@ class Public::UsersController < ApplicationController
   end
 
   def show
-    @myself = current_user
-    @user = User.find(params[:id])
+    @user = current_user
+    @target_user = User.find(params[:id])
     @posts = Post.where(user_id: @user.id).order(created_at: :desc)
   end
 

@@ -2,71 +2,30 @@
   <div class="row">
 
     <!-- ユーザー情報を表示するサイドバー -->
-    <div class="col-2 offset-1 px-2 border-end vh-100">
-      <div class="container">
-        <div class="row mt-5 mb-2">
-          <div class="col px-0">
-            <%= image_tag @myself.get_profile_image(150, 150) %>
-          </div>
-        </div>
-        <div class="row mb-4">
-          <div class="col px-0">
-            <h3 style="width: 150px;"><%= @myself.name %></h3>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col px-0">
-            <%= link_to edit_user_path do %>
-              <button class="btn btn-outline-secondary" style="width: 150px;">プロフィール編集へ</button>
-            <% end %>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col px-0">
-            <%= link_to book_marks_path do %>
-              <button class="btn btn-outline-secondary" style="width: 150px;">ブックマーク一覧へ</button>
-            <% end %>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col px-0">
-            <%= link_to new_post_path do %>
-              <button class="btn btn-primary" style="width: 150px;">新規投稿する</button>
-            <% end %>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col px-0">
-            <%= link_to unsubscribe_path do %>
-              <button class="btn btn-outline-danger" style="width: 150px;">退会する</button>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
+    <%= render 'public/users/login_user_sidebar', obj: @user %>
 
     <!-- 対象ユーザーのプロフィール・投稿一覧を表示 -->
     <div class="col-6 offset-1 mt-4">
       <div class="container">
         <div class="row mb-3">
           <div class="col">
-            <h5>&lt;<%= @user.name %>のプロフィール&gt;</h5>
+            <h5>&lt;<%= @target_user.name %>のプロフィール&gt;</h5>
           </div>
         </div>
         <div class="row pb-2 mb-4 border-bottom">
           <div class="col-auto" style="width: 200px;">
-            <%= image_tag @user.get_profile_image(200, 200) %>
+            <%= image_tag @target_user.get_profile_image(200, 200) %>
           </div>
           <div class="col ms-4">
             <div class="container">
               <div class="row mb-3">
                 <div class="col">
-                  <h3><%= @user.name %></h3>
+                  <h3><%= @target_user.name %></h3>
                 </div>
               </div>
               <div class="row">
                 <div class="col">
-                  <h5><%= @user.introduction %></h5>
+                  <h5><%= @target_user.introduction %></h5>
                 </div>
               </div>
             </div>
@@ -75,7 +34,7 @@
 
         <div class="row mb-3">
           <div class="col">
-            <h5>&lt;<%= @user.name %>の投稿一覧&gt;</h5>
+            <h5>&lt;<%= @target_user.name %>の投稿一覧&gt;</h5>
           </div>
         </div>
         <% @posts.each do |post| %>

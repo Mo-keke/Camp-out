@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     # messages
     resources :messages, only: [:create]
     # posts
+    get '/posts/timeline' => 'posts#timeline', as: 'timeline'
     resources :posts, only: [:new, :index, :show, :create, :destroy] do
       resources :post_comments, only: [:create, :destroy]
       resource :book_marks, only: [:create, :destroy]

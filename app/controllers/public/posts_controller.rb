@@ -16,13 +16,18 @@ class Public::PostsController < ApplicationController
 
   def index
     @user = current_user
-    # 自分とフォロー中ユーザーの投稿を新着順に表示
-    @posts = Post.where(user_id: [current_user.id, *current_user.following_ids]).order(created_at: :desc)
+    @posts = Post.all.order(created_at: :desc)
   end
 
   def show
     @user = current_user
     @post = Post.find(params[:id])
+  end
+
+  def timeline
+    @user = current_user
+    # 自分とフォロー中ユーザーの投稿を新着順に表示
+    @posts = Post.where(user_id: [current_user.id, *current_user.following_ids]).order(created_at: :desc)
   end
 
   def destroy

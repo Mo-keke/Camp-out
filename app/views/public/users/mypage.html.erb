@@ -2,48 +2,7 @@
   <div class="row">
 
     <!-- 自身のユーザー情報を表示するサイドバー -->
-    <div class="col-2 offset-1 px-2 border-end vh-100">
-      <div class="container">
-        <div class="row mt-5 mb-2">
-          <div class="col px-0">
-            <%= image_tag @user.get_profile_image(150, 150) %>
-          </div>
-        </div>
-        <div class="row mb-4">
-          <div class="col px-0">
-            <h3 style="width: 150px;"><%= @user.name %></h3>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col px-0">
-            <%= link_to edit_user_path do %>
-              <button class="btn btn-outline-secondary" style="width: 150px;">プロフィール編集へ</button>
-            <% end %>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col px-0">
-            <%= link_to book_marks_path do %>
-              <button class="btn btn-outline-secondary" style="width: 150px;">ブックマーク一覧へ</button>
-            <% end %>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col px-0">
-            <%= link_to new_post_path do %>
-              <button class="btn btn-primary" style="width: 150px;">新規投稿する</button>
-            <% end %>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col px-0">
-            <%= link_to unsubscribe_path do %>
-              <button class="btn btn-outline-danger" style="width: 150px;">退会する</button>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
+    <%= render 'public/users/login_user_sidebar', obj: @user %>
 
     <!-- ユーザープロフィール・自身の投稿を表示 -->
     <div class="col-6 offset-1 mt-4">
