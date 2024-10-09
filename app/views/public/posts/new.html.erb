@@ -1,2 +1,10 @@
-<h1>Public::Posts#new</h1>
-<p>Find me in app/views/public/posts/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <%= form_with model: @post do |f| %>
+        <%= f.text_area :body, rows: "6", placeholder: "投稿内容を入力してください。" %>
+        <%= f.submit "投稿する", class: "btn btn-outline-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>

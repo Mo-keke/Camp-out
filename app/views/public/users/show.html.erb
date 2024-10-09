@@ -1,2 +1,50 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <%= image_tag @user.get_profile_image(200,200) %>
+    </div>
+    <div class="col">
+      <%= @user.name %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= @user.introduction %>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <% @posts.each do |post| %>
+    <div class="row">
+      <div class="col">
+        <%= link_to user_path(post.user_id) do %>
+          <%= post.user.get_profile_image(100, 100) %>
+        <% end %>
+      </div>
+      <div class="col">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <%= link_to user_path(post.user_id) do %>
+                <%= post.user.name %>
+              <% end %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <%= link_to post_path(post.id) do %>
+                <%= post.body %>
+              <% end %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <%= post.created_at %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,2 +1,45 @@
-<h1>Public::Posts#show</h1>
-<p>Find me in app/views/public/posts/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <%= link_to user_path(@post.user_id) do %>
+        <%= image_tag @post.user.get_profile_image(100, 100) %>
+      <% end %>
+    </div>
+    <div class="col">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <%= link_to user_path(@post.user_id) do %>
+              <%= @post.user.name %>
+            <% end %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <%= link_to post_path(@post.id) do %>
+              <%= @post.body %>
+            <% end %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <%= @post.created_at %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <% if @post.user == curent_user %>
+        <div class="container">
+          <div class="row mt-auto">
+            <div class="col">
+              <%= link_to post_path(@post.id), method: :delete do %>
+                <button class="btn btn-outline-danger">投稿を削除する</button>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

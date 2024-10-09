@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     # users
     get '/users/mypage' => 'users#mypage', as: 'mypage'
     get '/users/profile/edit' => 'users#edit', as: 'edit_user'
-    patch '/users/profile' => 'usesrs#update', as: 'update_user'
+    patch '/users/profile' => 'users#update', as: 'update_user'
     get '/users/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
     resources :users, only: [:show, :destroy] do
       resource :relationships, only: [:create, :destroy]
@@ -40,7 +40,7 @@ Rails.application.routes.draw do
       resource :book_marks, only: [:create, :destroy]
     end
     # book_marks
-    resource :book_marks, only: [:index]
+    resources :book_marks, only: [:index]
     # camp_layouts
     resources :camp_layouts, only: [:index]
     # camp_meals

@@ -1,2 +1,17 @@
-<h1>Public::Users#unsubscribe</h1>
-<p>Find me in app/views/public/users/unsubscribe.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h5>
+        アカウントを削除してもよろしいでしょうか。<br>
+        一度削除したアカウントは復元できません。ご確認のうえ、削除する場合は以下のボタンをクリックしてください。
+      </h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= link_to user_path, method: :delete do %>
+        <button class="btn btn-danger">アカウントを削除する</button>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,2 +1,38 @@
-<h1>Public::Users#edit</h1>
-<p>Find me in app/views/public/users/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h5>ユーザープロフィール編集</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= form_with model: @user, url: update_user_path, method: :patch do |f| %>
+        <div class="container">
+          <div class="row">
+            <div class="col form-group">
+              <%= f.label :プロフィール画像 %>
+              <%= f.file_field :profile_image, accept: "image/*" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col form-group">
+              <%= f.label :アカウント名 %>
+              <%= f.text_field :name, placeholder: "アカウント名" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col form-group">
+              <%= f.label :自己紹介 %>
+              <%= f.text_area :introduction, rows: "4", placeholder: "ここに自己紹介文を記述します" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <%= f.submit "編集を保存する", class: "btn btn-outline-primary" %>
+            </div>
+          </div>
+        </div>
+       <% end %>
+    </div>
+  </div>
+</div>
