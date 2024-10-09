@@ -19,11 +19,13 @@ class Public::UsersController < ApplicationController
   end
 
   def show
+    @myself = current_user
     @user = User.find(params[:id])
     @posts = Post.where(user_id: @user.id).order(created_at: :desc)
   end
 
   def unsubscribe
+    @user = current_user
   end
 
   def destroy

@@ -1,45 +1,101 @@
-<div class="container">
+<div class="container-fruid">
   <div class="row">
-    <div class="col">
-      <%= link_to user_path(@post.user_id) do %>
-        <%= image_tag @post.user.get_profile_image(100, 100) %>
-      <% end %>
-    </div>
-    <div class="col">
+
+    <!-- 自身のユーザー情報を表示するサイドバー -->
+    <div class="col-2 offset-1 px-2 border-end vh-100">
       <div class="container">
-        <div class="row">
-          <div class="col">
-            <%= link_to user_path(@post.user_id) do %>
-              <%= @post.user.name %>
+        <div class="row mt-5 mb-2">
+          <div class="col px-0">
+            <%= image_tag @user.get_profile_image(150, 150) %>
+          </div>
+        </div>
+        <div class="row mb-4">
+          <div class="col px-0">
+            <h3 style="width: 150px;"><%= @user.name %></h3>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col px-0">
+            <%= link_to edit_user_path do %>
+              <button class="btn btn-outline-secondary" style="width: 150px;">プロフィール編集へ</button>
             <% end %>
           </div>
         </div>
-        <div class="row">
-          <div class="col">
-            <%= link_to post_path(@post.id) do %>
-              <%= @post.body %>
+        <div class="row mb-3">
+          <div class="col px-0">
+            <%= link_to book_marks_path do %>
+              <button class="btn btn-outline-secondary" style="width: 150px;">ブックマーク一覧へ</button>
             <% end %>
           </div>
         </div>
-        <div class="row">
-          <div class="col">
-            <%= @post.created_at %>
+        <div class="row mb-3">
+          <div class="col px-0">
+            <%= link_to new_post_path do %>
+              <button class="btn btn-primary" style="width: 150px;">新規投稿する</button>
+            <% end %>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col px-0">
+            <%= link_to unsubscribe_path do %>
+              <button class="btn btn-outline-danger" style="width: 150px;">退会する</button>
+            <% end %>
           </div>
         </div>
       </div>
     </div>
-    <div class="col">
-      <% if @post.user == curent_user %>
-        <div class="container">
-          <div class="row mt-auto">
-            <div class="col">
-              <%= link_to post_path(@post.id), method: :delete do %>
-                <button class="btn btn-outline-danger">投稿を削除する</button>
+
+    <!-- 投稿詳細・コメントを表示 -->
+    <div class="col-6 offset-1 mt-4">
+      <div class="container">
+        <div class="row mb-4">
+          <div class="col-auto" style="width: 100px;">
+             <%= link_to user_path(@post.user_id) do %>
+              <%= image_tag @post.user.get_profile_image(100, 100) %>
+            <% end %>
+          </div>
+          <div class="col ms-4">
+            <div class="container h-100 d-flex flex-column">
+              <div class="row">
+                <div class="col fw-bold">
+                  <%= link_to user_path(@post.user_id), class: "link-dark link-underline-opacity-0 link-underline-opacity-100-hover" do %>
+                    <%= @post.user.name %>
+                  <% end %>
+                </div>
+              </div>
+              <%= link_to post_path(@post.id), class: "link-dark link-underline-opacity-0 link-underline-opacity-100-hover" do %>
+                <div class="row">
+                  <div class="col">
+                    <%= @post.body %>
+                  </div>
+                </div>
               <% end %>
+              <div class="row mt-auto">
+                <div class="col">
+                  <%= @post.created_at %>
+                </div>
+              </div>
             </div>
           </div>
+          <div class="col-auto ms-auto px-0">
+            <% if @post.user == current_user %>
+              <div class="container h-100 d-flex flex-column">
+                <div class="row  mt-auto">
+                  <div class="col px-0">
+                    <%= link_to post_path(@post.id), method: :delete do %>
+                      <i class="fa-solid fa-trash fa-2x" style="color: #dd1155;"></i>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
         </div>
-      <% end %>
+        <div class="row pb-2 mb-4 border-bottom">
+          <!-- ここにコメントを表示 -->
+        </div>
+      </div>
     </div>
+
   </div>
 </div>

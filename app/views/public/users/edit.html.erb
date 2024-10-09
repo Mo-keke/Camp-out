@@ -1,29 +1,75 @@
-<div class="container">
+<div class="container-fruid">
   <div class="row">
-    <div class="col">
-      <h5>ユーザープロフィール編集</h5>
+
+    <!-- 自身のユーザー情報を表示するサイドバー -->
+    <div class="col-2 offset-1 px-2 border-end vh-100">
+      <div class="container">
+        <div class="row mt-5 mb-2">
+          <div class="col px-0">
+            <%= image_tag @user.get_profile_image(150, 150) %>
+          </div>
+        </div>
+        <div class="row mb-4">
+          <div class="col px-0">
+            <h3 style="width: 150px;"><%= @user.name %></h3>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col px-0">
+            <%= link_to edit_user_path do %>
+              <button class="btn btn-outline-secondary" style="width: 150px;">プロフィール編集へ</button>
+            <% end %>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col px-0">
+            <%= link_to book_marks_path do %>
+              <button class="btn btn-outline-secondary" style="width: 150px;">ブックマーク一覧へ</button>
+            <% end %>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col px-0">
+            <%= link_to new_post_path do %>
+              <button class="btn btn-primary" style="width: 150px;">新規投稿する</button>
+            <% end %>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col px-0">
+            <%= link_to unsubscribe_path do %>
+              <button class="btn btn-outline-danger" style="width: 150px;">退会する</button>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <%= form_with model: @user, url: update_user_path, method: :patch do |f| %>
-        <div class="container">
-          <div class="row">
+
+    <!-- ユーザープロフィール編集フォーム-->
+    <div class="col-6 offset-1 mt-4">
+      <div class="container">
+        <div class="row mb-3">
+          <div class="col">
+            <h5>ユーザープロフィール編集</h5>
+          </div>
+        </div>
+        <%= form_with model: @user, url: update_user_path, method: :patch do |f| %>
+          <div class="row mb-3">
             <div class="col form-group">
-              <%= f.label :プロフィール画像 %>
-              <%= f.file_field :profile_image, accept: "image/*" %>
+              <%= f.label :プロフィール画像, class: "form-label" %>
+              <%= f.file_field :profile_image, accept: "image/*", class: "form-control border-secondary" %>
             </div>
           </div>
-          <div class="row">
+          <div class="row mb-3">
             <div class="col form-group">
-              <%= f.label :アカウント名 %>
-              <%= f.text_field :name, placeholder: "アカウント名" %>
+              <%= f.label :アカウント名, class: "form-label" %>
+              <%= f.text_field :name, placeholder: "アカウント名", class: "form-control border-secondary" %>
             </div>
           </div>
-          <div class="row">
+          <div class="row mb-5">
             <div class="col form-group">
-              <%= f.label :自己紹介 %>
-              <%= f.text_area :introduction, rows: "4", placeholder: "ここに自己紹介文を記述します" %>
+              <%= f.label :自己紹介, class: "form-label" %>
+              <%= f.text_area :introduction, rows: "4", placeholder: "ここに自己紹介文を記述します", class: "form-control border-secondary" %>
             </div>
           </div>
           <div class="row">
@@ -31,8 +77,10 @@
               <%= f.submit "編集を保存する", class: "btn btn-outline-primary" %>
             </div>
           </div>
+         <% end %>
         </div>
-       <% end %>
+      </div>
     </div>
+
   </div>
 </div>
