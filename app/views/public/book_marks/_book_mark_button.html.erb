@@ -1,0 +1,11 @@
+<% if obj.book_marked_by?(current_user) %>
+  <%= link_to post_book_marks_path(obj.id), method: :delete, class: "link-dark link-underline-opacity-0" do %>
+    <i class="fa-solid fa-heart fa-lg" style="color:red;"></i>
+  <% end %>
+  <span class="ms-1"><%= obj.book_marks.count %></span>
+<% else %>
+  <%= link_to post_book_marks_path(obj.id), method: :post, class: "link-dark link-underline-opacity-0" do %>
+    <i class="fa-regular fa-heart fa-lg"></i>
+  <% end %>
+  <span class="ms-1"><%= obj.book_marks.count %></span>
+<% end %>

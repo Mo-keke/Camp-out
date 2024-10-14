@@ -12,38 +12,7 @@
             <h5><みんなの投稿></h5>
           </div>
         </div>
-        <% @posts.each do |post| %>
-          <div class="row py-2 border-bottom">
-            <div class="col-auto" style="width: 100px">
-              <%= link_to user_path(post.user_id) do %>
-                <%= image_tag post.user.get_profile_image(100, 100) %>
-              <% end %>
-            </div>
-            <div class="col ms-4">
-              <div class="container h-100 d-flex flex-column">
-                <div class="row">
-                  <div class="col fw-bold">
-                    <%= link_to user_path(post.user_id), class: "link-dark link-underline-opacity-0 link-underline-opacity-100-hover" do %>
-                      <%= post.user.name %>
-                    <% end %>
-                  </div>
-                </div>
-                <%= link_to post_path(post.id), class: "link-dark link-underline-opacity-0 link-underline-opacity-100-hover" do %>
-                  <div class="row">
-                    <div class="col">
-                      <%= post.body %>
-                    </div>
-                  </div>
-                <% end %>
-                <div class="row mt-auto">
-                  <div class="col">
-                    <%= post.created_at %>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        <% end %>
+        <%= render 'public/posts/posts_index', obj: @posts 
       </div>
     </div>
 

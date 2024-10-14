@@ -7,4 +7,8 @@ class Post < ApplicationRecord
   belongs_to :user
 
   has_many_attached :post_images
+
+  def book_marked_by?(user)
+    book_marks.exists?(user_id: user.id)
+  end
 end
