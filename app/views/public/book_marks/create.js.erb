@@ -1,5 +1,5 @@
 <!-- posts/showページ以外の部分テンプレートに適用 -->
-$("#book_mark_button_<%= @post.id %>").html("<%= j(render 'public/book_marks/book_mark_button', obj: @post) %>");
+$("#book_mark_button_<%= @post.id %>").html("<%= j(render 'public/book_marks/book_mark_button', post: @post) %>");
 
 <!-- posts/showページに適用 -->
-$(".book_mark_button").html("<%= j(render 'public/book_marks/book_mark_button', obj: @post) %>");
+$(".book_mark_button").html("<%= j(render 'public/book_marks/book_mark_button', post: @post) %>");

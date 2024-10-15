@@ -41,7 +41,7 @@
               <div class="row  mt-auto">
                 <div class="book_mark_button col px-0">
                   <!-- ブックマークの作成・削除（非同期通信）-->
-                  <%= render 'public/book_marks/book_mark_button', obj: @post %>
+                  <%= render 'public/book_marks/book_mark_button', post: @post %>
                 </div>
               </div>
             </div>
@@ -69,7 +69,7 @@
         </div>
         <div class="row">
           <div class="post_comment_index col">
-            <%= render 'public/post_comments/post_comment_index', obj: @post_comments %>
+            <%= render 'public/post_comments/post_comment_index', post_comments: @post_comments %>
           </div>
         </div>
         <%= form_with model: [@post, @post_comment], url: post_post_comments_path(@post.id), method: :post, local: false do |f| %>
