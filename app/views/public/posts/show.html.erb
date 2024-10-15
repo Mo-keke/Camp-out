@@ -39,13 +39,14 @@
           <div class="col-auto ms-auto px-0">
             <div class="container h-100 d-flex flex-column">
               <div class="row  mt-auto">
-                <div class="col px-0">
+                <div class="book_mark_button col px-0">
+                  <!-- ブックマークの作成・削除（非同期通信）-->
                   <%= render 'public/book_marks/book_mark_button', obj: @post %>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-auto ms-3 px-0">
+          <div class="col-auto ms-2 px-0">
             <% if @post.user == current_user %>
               <div class="container h-100 d-flex flex-column">
                 <div class="row  mt-auto">
@@ -66,65 +67,23 @@
             <h5><コメント></h5>
           </div>
         </div>
-        <% @post_comments.each do |post_comment| %>
-          <div class="row py-2 border-bottom">
-            <div class="col-auto" style="width: 50px">
-              <%= link_to user_path(post_comment.user_id) do %>
-                <%= image_tag post_comment.user.get_profile_image(50, 50) %>
-              <% end %>
+        <div class="row">
+          <div class="post_comment_index col">
+            <%= render 'public/post_comments/post_comment_index', obj: @post_comments %>
+          </div>
+        </div>
+        <%= form_with model: [@post, @post_comment], url: post_post_comments_path(@post.id), method: :post, local: false do |f| %>
+          <div class="row mb-3">
+            <div class="col">
+              <%= f.text_area :comment, rows: "3", placeholder: "コメントを入力してください。", class: "form-control border-secondary" %>
             </div>
-            <div class="col ms-4">
-              <div class="container h-100 d-flex flex-column">
-                <div class="row">
-                  <div class="col fw-bold">
-                    <%= link_to user_path(post_comment.user_id), class: "link-dark link-underline-opacity-0 link-underline-opacity-100-hover" do %>
-                      <%= post_comment.user.name %>
-                    <% end %>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col">
-                    <%= post_comment.comment %>
-                  </div>
-                  </div>
-                <div class="row mt-auto">
-                  <div class="col">
-                    <%= post_comment.created_at %>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-auto ms-3 px-0">
-              <% if post_comment.user == current_user %>
-                <div class="container h-100 d-flex flex-column">
-                  <div class="row  mt-auto">
-                    <div class="col px-0">
-                      <%= link_to post_post_comment_path(post_comment.post_id, post_comment.id), method: :delete do %>
-                        <i class="fa-solid fa-trash fa-lg" style="color: #dd1155;"></i>
-                      <% end %>
-                    </div>
-                  </div>
-                </div>
-              <% end %>
+          </div>
+          <div class="row">
+            <div class="col">
+              <%= f.submit "コメントする", class: "btn btn-outline-primary" %>
             </div>
           </div>
         <% end %>
-        <div class="row">
-          <div class="col">
-            <%= form_with model: [@post, @post_comment], url: post_post_comments_path(@post.id), method: :post do |f| %>
-              <div class="row mb-3">
-                <div class="col">
-                  <%= f.text_area :comment, rows: "3", placeholder: "コメントを入力してください。", class: "form-control border-secondary" %>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <%= f.submit "コメントする", class: "btn btn-outline-primary" %>
-                </div>
-              </div>
-            <% end %>
-          </div>
-        </div>
       </div>
     </div>
 

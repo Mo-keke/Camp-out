@@ -1,11 +1,15 @@
 <% if obj.book_marked_by?(current_user) %>
-  <%= link_to post_book_marks_path(obj.id), method: :delete, class: "link-dark link-underline-opacity-0" do %>
-    <i class="fa-solid fa-heart fa-lg" style="color:red;"></i>
+  <%= link_to post_book_marks_path(obj.id), method: :delete, remote: true, class: "link-dark link-underline-opacity-0" do %>
+    <i class="fa-solid fa-bookmark fa-lg" style="color:limegreen;"></i>
   <% end %>
-  <span class="ms-1"><%= obj.book_marks.count %></span>
+  <% if obj.user == current_user %>
+    <span><%= obj.book_marks.count %></span>
+  <% end %>
 <% else %>
-  <%= link_to post_book_marks_path(obj.id), method: :post, class: "link-dark link-underline-opacity-0" do %>
-    <i class="fa-regular fa-heart fa-lg"></i>
+  <%= link_to post_book_marks_path(obj.id), method: :post, remote: true, class: "link-dark link-underline-opacity-0" do %>
+    <i class="fa-regular fa-bookmark fa-lg"></i>
   <% end %>
-  <span class="ms-1"><%= obj.book_marks.count %></span>
+  <% if obj.user == current_user %>
+    <span><%= obj.book_marks.count %></span>
+  <% end %>
 <% end %>
