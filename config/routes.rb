@@ -50,8 +50,8 @@ Rails.application.routes.draw do
     resources :campsites, only: [:index]
     # reports
     resources :reports, only: [:new, :create]
-    # inquires
-    resources :inquires, only: [:new, :create]
+    # inquiries
+    resources :inquiries, only: [:new, :create]
   end
 
   # 管理者用
@@ -64,7 +64,7 @@ Rails.application.routes.draw do
     get '/user_search_result' => 'searches#search', as: 'search'
     # reports
     resources :reports, only: [:index, :show]
-    # inquires
-    resources :inquires, only: [:index, :show]
+    # inquiries
+    resources :inquiries, only: [:index, :show]
   end
 end

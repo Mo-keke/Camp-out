@@ -2,7 +2,9 @@
   <div class="row">
 
     <!-- 自身のユーザー情報を表示するサイドバー -->
-    <%= render 'public/users/login_user_sidebar', obj: @user %>
+    <% if user_signed_in? %>
+      <%= render 'public/users/login_user_sidebar', user: @user %>
+    <% end %>
 
     <!-- 登録ユーザー全体の投稿一覧を表示 -->
     <div class="col-6 offset-1 mt-4">
@@ -12,7 +14,7 @@
             <h5><みんなの投稿></h5>
           </div>
         </div>
-        <%= render 'public/posts/posts_index', obj: @posts %>
+        <%= render 'public/posts/posts_index', posts: @posts %>
       </div>
     </div>
 

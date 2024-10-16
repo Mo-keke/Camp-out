@@ -1,4 +1,6 @@
 class Public::PostCommentsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     post = Post.find(params[:post_id])
     @post_comments = PostComment.where(post_id: post.id)

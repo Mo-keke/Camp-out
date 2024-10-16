@@ -1,4 +1,4 @@
-<% obj.each do |post| %>
+<% posts.each do |post| %>
   <div class="row py-2 border-bottom">
     <div class="col-auto" style="width: 100px">
       <%= link_to user_path(post.user_id) do %>
@@ -28,15 +28,16 @@
         </div>
       </div>
     </div>
-    <div class="col-auto ms-auto px-0">
-      <div class="container h-100 d-flex flex-column">
-        <div class="row  mt-auto">
-          <div id="book_mark_button_<%= post.id %>" class="col px-0">
-            <!-- ブックマークの作成・削除（非同期通信）-->
-            <%= render 'public/book_marks/book_mark_button', post: post %>
+    <% if user_signed_in? %> <!-- ログイン時 → ブックマークの作成・削除（非同期通信）-->
+      <div class="col-auto ms-auto px-0">
+        <div class="container h-100 d-flex flex-column">
+          <div class="row  mt-auto">
+            <div id="book_mark_button_<%= post.id %>" class="col px-0">
+              <%= render 'public/book_marks/book_mark_button', post: post %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    <% end %>
   </div>
 <% end %>

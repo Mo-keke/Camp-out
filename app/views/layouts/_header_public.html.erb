@@ -33,6 +33,11 @@
             <% end %>
           </li>
         <% else %>
+          <li class="nav-item">
+            <%= link_to posts_path, class: "nav-link text-dark text-right" do %>
+              <button class="btn btn-outline-dark">みんなの投稿</button>
+            <% end %>
+          </li>
           <li>
             <%= link_to camp_layouts_path, class: "nav-link text-dark text-right" do %>
               <button class="btn btn-outline-dark"><i class="fa-solid fa-tents"></i>レイアウト</button>

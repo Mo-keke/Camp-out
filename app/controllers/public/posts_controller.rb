@@ -1,4 +1,6 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+
   def new
     @user = current_user
     @post = Post.new
@@ -10,6 +12,7 @@ class Public::PostsController < ApplicationController
       flash[:success] = "投稿に成功しました。"
       redirect_to post_path(@post.id)
     else
+      @user = current_user
       render 'new'
     end
   end

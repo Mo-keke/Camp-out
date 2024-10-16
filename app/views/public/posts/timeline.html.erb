@@ -2,7 +2,7 @@
   <div class="row">
 
     <!-- 自身のユーザー情報を表示するサイドバー -->
-    <%= render 'public/users/login_user_sidebar', obj: @user %>
+    <%= render 'public/users/login_user_sidebar', user: @user %>
 
     <!-- 自身とフォロー中ユーザーの投稿を表示 -->
     <div class="col-6 offset-1 mt-4">
@@ -12,7 +12,7 @@
             <h5><フォロー中ユーザの投稿></h5>
           </div>
         </div>
-        <%= render 'public/posts/posts_index', obj: @posts %>
+        <%= render 'public/posts/posts_index', posts: @posts %>
       </div>
     </div>
 

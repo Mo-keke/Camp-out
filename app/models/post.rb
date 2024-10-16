@@ -8,6 +8,8 @@ class Post < ApplicationRecord
 
   has_many_attached :post_images
 
+  validates :body, presence: true, length: {maximum: 256}
+
   def book_marked_by?(user)
     book_marks.exists?(user_id: user.id)
   end

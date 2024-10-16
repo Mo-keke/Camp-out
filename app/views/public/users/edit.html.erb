@@ -2,7 +2,7 @@
   <div class="row">
 
     <!-- 自身のユーザー情報を表示するサイドバー -->
-    <%= render 'public/users/login_user_sidebar', obj: @user %>
+    <%= render 'public/users/login_user_sidebar', user: @user %>
 
     <!-- ユーザープロフィール編集フォーム-->
     <div class="col-6 offset-1 mt-4">
@@ -10,6 +10,18 @@
         <div class="row mb-3">
           <div class="col">
             <h5>ユーザープロフィール編集</h5>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <% if @user.errors.any? %>
+              <%= @user.errors.count %>件のエラーが発生しました
+              <ul>
+                <% @user.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            <% end %>
           </div>
         </div>
         <%= form_with model: @user, url: update_user_path, method: :patch do |f| %>

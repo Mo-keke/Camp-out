@@ -2,11 +2,18 @@
   <div class="row">
 
     <!-- 自身のユーザー情報を表示するサイドバー -->
-    <%= render 'public/users/login_user_sidebar', obj: @user %>
+    <% if user_signed_in? %>
+      <%= render 'public/users/login_user_sidebar', user: @user %>
+    <% end %>
 
     <!-- 投稿詳細を表示 -->
     <div class="col-6 offset-1 mt-4">
       <div class="container">
+        <div class="row mb-3">
+          <div class="col">
+            <p class="text-success"><%= flash[:success] %></p>
+          </div>
+        </div>
         <div class="row pb-4 mb-4 border-bottom">
           <div class="col-auto" style="width: 100px;">
              <%= link_to user_path(@post.user_id) do %>
@@ -36,18 +43,19 @@
               </div>
             </div>
           </div>
-          <div class="col-auto ms-auto px-0">
-            <div class="container h-100 d-flex flex-column">
-              <div class="row  mt-auto">
-                <div class="book_mark_button col px-0">
-                  <!-- ブックマークの作成・削除（非同期通信）-->
-                  <%= render 'public/book_marks/book_mark_button', post: @post %>
+          <% if user_signed_in? %> <!-- ログイン時 → ブックマークの作成・削除（非同期通信）-->
+            <div class="col-auto ms-auto px-0">
+              <div class="container h-100 d-flex flex-column">
+                <div class="row  mt-auto">
+                  <div class="book_mark_button col px-0">
+                    <%= render 'public/book_marks/book_mark_button', post: @post %>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-auto ms-2 px-0">
-            <% if @post.user == current_user %>
+          <% end %>
+          <% if @post.user == current_user %>
+            <div class="col-auto ms-2 px-0">
               <div class="container h-100 d-flex flex-column">
                 <div class="row  mt-auto">
                   <div class="col px-0">
@@ -57,8 +65,8 @@
                   </div>
                 </div>
               </div>
-            <% end %>
-          </div>
+            </div>
+          <% end %>
         </div>
 
         <!-- コメント一覧・コメント投稿フォームを表示 -->
@@ -80,7 +88,11 @@
           </div>
           <div class="row">
             <div class="col">
-              <%= f.submit "コメントする", class: "btn btn-outline-primary" %>
+              <% if user_signed_in? %>
+                <%= f.submit "コメントする", class: "btn btn-outline-primary" %>
+              <% else %>
+                <button type="button" class="btn btn-outline-danger" disabled>コメントするにはログインが必要です</button>
+              <% end %>
             </div>
           </div>
         <% end %>

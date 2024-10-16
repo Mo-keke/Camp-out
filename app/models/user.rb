@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :entries,       dependent: :destroy
   has_many :messages,      dependent: :destroy
   has_many :reports,       dependent: :destroy
-  has_many :inquires,      dependent: :destroy
+  has_many :inquiries,     dependent: :destroy
 
   # フォロー中ユーザーの一覧を取得
   has_many :active_relationships,  class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
@@ -21,6 +21,9 @@ class User < ApplicationRecord
   has_many :followers,  through: :passive_relationships, source: :follower
 
   has_one_attached :profile_image
+
+  validates :name, presence: true, length: {maximum: 32}
+  validates :introduction, length: {maximum: 256}
 
   def get_profile_image(width, height)
     unless profile_image.attached?
