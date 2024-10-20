@@ -1,0 +1,23 @@
+<%= f.fields_for :campsites do |campsite_form| %>
+  <div class="row mb-3">
+    <div class="col">
+      <%= campsite_form.file_field :campsite_images, accept: "image/*", :multiple => true, class: "form-control border-secondary" %>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col">
+      <%= campsite_form.text_field :name, placeholder: "キャンプ場の名前", class: "form-control border-secondary" %>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col">
+      <%= campsite_form.text_area :description, rows: "4", placeholder: "ここにキャンプ場の説明（おすすめポイントなど）を記述します。", class: "form-control border-secondary" %>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col">
+      <%= campsite_form.text_field :address, placeholder: "キャンプ場の住所", class: "form-control border-secondary" %>
+    </div>
+  </div>
+  <!-- レビュー機能を実装 -->
+<% end %>

@@ -1,0 +1,23 @@
+<div class="nested-fields">
+  <div class="row mb-3">
+    <div class="col">
+      <%= f.label :camp_gear_images do %>
+        <div class="border border-secondary px-5 py-3">
+          <i class="fa-solid fa-camera"></i>
+        </div>
+      <% end %>
+      <%= f.file_field :camp_gear_images, accept: "image/*", :multiple => true, class: "hidden_file_field" %>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col">
+      <%= f.text_field :name, placeholder: "キャンプギア名", class: "form-control border-secondary" %>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col">
+      <%= f.text_area :description, rows: "4", placeholder: "ここにキャンプギアの概要・説明を記入します。", class: "form-control border-secondary" %>
+    </div>
+  </div>
+  <%= link_to_remove_association "削除", f, class: "remove-btn" %>
+</div>

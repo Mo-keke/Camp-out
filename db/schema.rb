@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_10_07_171836) do
+ActiveRecord::Schema.define(version: 2024_10_17_064350) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -61,32 +61,33 @@ ActiveRecord::Schema.define(version: 2024_10_07_171836) do
 
   create_table "camp_gears", force: :cascade do |t|
     t.integer "camp_layout_id", null: false
-    t.string "name", null: false
-    t.text "description", null: false
+    t.string "name"
+    t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "camp_layouts", force: :cascade do |t|
     t.integer "post_id", null: false
+    t.text "title", null: false
     t.text "description", null: false
-    t.text "recommendation", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "camp_meals", force: :cascade do |t|
     t.integer "post_id", null: false
-    t.text "ingredient", null: false
+    t.string "name", null: false
+    t.text "description", null: false
     t.text "recipe", null: false
     t.integer "time_required", null: false
-    t.text "impression", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "campsites", force: :cascade do |t|
     t.integer "post_id", null: false
+    t.string "name", null: false
     t.text "description", null: false
     t.string "address", null: false
     t.float "review", null: false
@@ -97,6 +98,14 @@ ActiveRecord::Schema.define(version: 2024_10_07_171836) do
   create_table "entries", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "room_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "ingredients", force: :cascade do |t|
+    t.integer "camp_meal_id", null: false
+    t.string "ingredient", null: false
+    t.string "amount", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

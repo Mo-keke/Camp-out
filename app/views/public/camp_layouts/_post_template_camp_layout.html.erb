@@ -1,0 +1,48 @@
+<div class="row mb-3">
+  <div class="col">
+    <div class="image_container">
+      <%= f.label :camp_layout_images do %>
+        <div class="initial_display_field">
+          <i class="fa-solid fa-camera fa-4x"></i>
+          <h2 class="initial_display_field_text">クリックして写真を追加</h2>
+        </div>
+      <% end %>
+      <%= f.file_field :camp_layout_images, accept: "image/*", :multiple => true, class: "initial_hidden_field hidden_file_field" %>
+      <div class="swiper">
+        <div class="swiper-wrapper"></div>
+        <div class="swiper-button-next"><i class="fa-solid fa-circle-chevron-right fa-2x"></i></div>
+        <div class="swiper-button-prev"><i class="fa-solid fa-circle-chevron-left fa-2x"></i></div>
+        <div class="swiper-pagination"></div>
+      </div>
+      <div class="add_file_field_container">
+        <%= f.label :camp_layout_images do %>
+          <i class="fa-solid fa-plus"></i>写真を追加
+        <% end %>
+        <%= f.file_field :camp_layout_images, accept: "image/*", :multiple => true, class: "add_hidden_field hidden_file_field" %>
+      </div>
+      <div class="remove_image_container">
+        <i class="fa-solid fa-trash"></i>画像を削除
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row mb-3">
+  <div class="col">
+    <%= f.text_field :title, placeholder: "レイアウトのタイトル", class: "form-control border-secondary" %>
+  </div>
+</div>
+<div class="row mb-3">
+  <div class="col">
+    <%= f.text_area :description, rows: "4", placeholder: "ここにレイアウトの説明（おすすめポイントなど）を記述します。", class: "form-control border-secondary" %>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <%= f.fields_for :camp_gears do |camp_gear_form| %>
+      <%= render 'public/camp_gears/camp_gear_fields', f: camp_gear_form %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association "+キャンプギアを追加", f, :camp_gears, partial: 'public/camp_gears/camp_gear_fields' %>
+    </div>
+  </div>
+</div>

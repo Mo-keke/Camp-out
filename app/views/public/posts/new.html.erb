@@ -5,7 +5,7 @@
     <%= render 'public/users/login_user_sidebar', user: @user %>
 
     <!-- 新規投稿フォーム -->
-    <div class="col-6 offset-1 mt-4">
+    <div class="col-7 offset-1 mt-4">
       <div class="container">
         <div class="row mb-3">
           <div class="col">
@@ -25,6 +25,32 @@
           </div>
         </div>
         <%= form_with model: @post do |f| %>
+          <div class="row">
+            <div class="tab-wrap col">
+              <ul class="tab-menu p-0 m-0">
+                <li><a href="#tab1" class="active">テンプレートを使用しない</a></li>
+                <li><a href="#tab2" class="">キャンプレイアウト</a></li>
+                <li><a href="#tab3" class="">キャンプ飯</a></li>
+                <li><a href="#tab4" class="">キャンプ場</a></li>
+              </ul>
+              <div class="tab-contents">
+                <div id="tab1" class="tab"></div>
+                <div id="tab2" class="tab">
+                  <%= f.fields_for :camp_layout do |camp_layout_form| %>
+                    <%= render 'public/camp_layouts/post_template_camp_layout', f: camp_layout_form %>
+                  <% end %>
+                </div>
+                <div id="tab3" class="tab">
+                  <%= f.fields_for :camp_meal do |camp_meal_form| %>
+                    <%= render 'public/camp_meals/post_template_camp_meal', f: camp_meal_form %>
+                  <% end %>
+                </div>
+                <div id="tab4" class="tab">
+                  <%= render 'public/campsites/post_template_campsite', f: f %>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="row mb-3">
             <div class="col">
               <%= f.text_area :body, rows: "6", placeholder: "投稿内容を入力してください。", class: "form-control border-secondary" %>

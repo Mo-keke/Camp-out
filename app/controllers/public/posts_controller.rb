@@ -4,6 +4,11 @@ class Public::PostsController < ApplicationController
   def new
     @user = current_user
     @post = Post.new
+    @post.build_camp_layout
+    @post.camp_layout.camp_gears.build
+    @post.build_camp_meal
+    @post.camp_meal.ingredients.build
+    @post.build_campsite
   end
 
   def create
@@ -44,6 +49,21 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:post_images, :body)
+    permitted_params = [:body]
+
+    # テンプレートが選択されていた場合、そのフォームのデータのみを受け取る
+    if params[:post][:camp_layouts_attributes].present?
+      permitted_params << { camp_layouts_attributes: [:title, :description, camp_gears_attributes: [:name, :description] ] }
+    end
+
+    if params[:post][:camp_meals_attributes].present?
+      permitted_params << { camp_meals_attributes: [:name, :description, :recipe, :time_required, ingredients_attributes: [:ingredient, :amount] ] }
+    end
+
+    if params[:post][:campsites_attributes].present?
+      permitted_params << { campsites_attributes: [:name, :description, :address, :review] }
+    end
+
+    params.require(:post).permit(permitted_params)
   end
 end

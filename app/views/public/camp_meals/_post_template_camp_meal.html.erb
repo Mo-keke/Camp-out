@@ -1,0 +1,25 @@
+<div class="row mb-3">
+  <div class="col">
+    <%= f.file_field :camp_meal_images, accept: "image/*", :multiple => true, class: "form-control border-secondary" %>
+  </div>
+</div>
+<div class="row mb-3">
+  <div class="col">
+    <%= f.text_field :name, placeholder: "キャンプ飯の名前", class: "form-control border-secondary" %>
+  </div>
+</div>
+<div class="row mb-3">
+  <div class="col">
+    <%= f.text_area :description, rows: "4", placeholder: "ここにキャンプ飯の説明（おすすめポイントなど）を記述します。", class: "form-control border-secondary" %>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <%= f.fields_for :ingredients do |ingredient_form| %>
+      <%= render 'public/ingredients/ingredient_forms', f: ingredient_form %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association "+材料を追加", f, :ingredients, partial: 'public/ingredients/ingredient_forms' %>
+    </div>
+  </div>
+</div>
