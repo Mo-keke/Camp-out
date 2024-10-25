@@ -1,0 +1,65 @@
+<div class="row mt-4 mb-2">
+  <div class="col">
+    <h5><キャンプ場></h5>
+  </div>
+</div>
+<div class="row">
+  <div class="col-auto pe-0">
+    <h5>キャンプ場名：</h5>
+  </div>
+  <div class="col">
+    <h5><%= post.campsite.name %></h5>
+  </div>
+</div>
+<div class="row pe-0 mb-3">
+  <div class="col pe-0">
+    <div id="layout-swiper-container-show" class="swiper swiper_show">
+      <div class="swiper-wrapper">
+        <% post.campsite.campsite_images.each do |campsite_image| %>
+          <div class="swiper-slide">
+            <%= image_tag campsite_image, size: "720×480" %>
+          </div>
+        <% end %>
+      </div>
+      <div class="swiper-button-next"><i class="fa-solid fa-circle-chevron-right fa-2x"></i></div>
+      <div class="swiper-button-prev"><i class="fa-solid fa-circle-chevron-left fa-2x"></i></div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-auto pe-0">
+    <h5>説明：</h5>
+  </div>
+  <div class="col">
+    <%=safe_join(post.campsite.description.split("\n"),tag(:br))%>
+  </div>
+</div>
+<div class="row">
+  <div class="col-auto pe-0">
+    <h5>所在地：</h5>
+  </div>
+  <div class="col">
+    <%= post.campsite.address %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-auto pe-0">
+    <h5>評価：</h5>
+  </div>
+  <div class="col">
+    <div id="show_raty_<%= post.campsite.id %>"></div>
+  </div>
+</div>
+
+<script>
+  $('#show_raty_<%= post.campsite.id %>').raty({
+    size     : 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    half: true,
+    readOnly: true,
+    score: <%= post.campsite.review %>
+  });
+</script>

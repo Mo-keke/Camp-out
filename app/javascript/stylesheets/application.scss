@@ -7,3 +7,22 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.template_button {
+  border-radius: 5px;
+}
+
+.template_button_red {
+  background: #FFEEFF;
+  border: 1px solid #FF88FF;
+}
+
+.template_button_yellow {
+  background: #FFFFDD;
+  border: 1px solid #FFFF77;
+}
+
+.template_button_blue {
+  background: #EEFFFF;
+  border: 1px solid #88FFFF;
+}

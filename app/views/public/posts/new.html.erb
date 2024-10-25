@@ -6,64 +6,40 @@
 
     <!-- 新規投稿フォーム -->
     <div class="col-7 offset-1 mt-4">
-      <div class="container">
-        <div class="row mb-3">
-          <div class="col">
-            <h5><新規投稿></h5>
+      <div class="row mb-3">
+        <div class="col">
+          <h5><新規投稿></h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="tab-wrap col">
+          <ul class="tab-menu p-0 m-0">
+            <li><a href="#tab1" class="active">テンプレートを使用しない</a></li>
+            <li><a href="#tab2" class="">キャンプレイアウト</a></li>
+            <li><a href="#tab3" class="">キャンプ飯</a></li>
+            <li><a href="#tab4" class="">キャンプ場</a></li>
+          </ul>
+
+          <div class="tab-contents">
+            <div id="tab1" class="tab">
+              <%= form_with model: @post do |f| %>
+                <%= f.label :body, "投稿文", class: "form-label" %>
+                <%= f.text_area :body, rows: "6", placeholder: "投稿文を入力してください。", class: "body_form form-control border-secondary" %>
+                <%= f.submit "投稿する", class: "submit_button btn btn-outline-primary" %>
+              <% end %>
+            </div>
+            <div id="tab2" class="tab">
+              <%= render 'public/camp_layouts/post_template_camp_layout' %>
+            </div>
+            <div id="tab3" class="tab">
+              <%= render 'public/camp_meals/post_template_camp_meal' %>
+            </div>
+            <div id="tab4" class="tab">
+              <%= render 'public/campsites/post_template_campsite' %>
+            </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col">
-            <% if @post.errors.any? %>
-              <%= @post.errors.count %>件のエラーが発生しました
-              <ul>
-                <% @post.errors.full_messages.each do |message| %>
-                  <li><%= message %></li>
-                <% end %>
-              </ul>
-            <% end %>
-          </div>
-        </div>
-        <%= form_with model: @post do |f| %>
-          <div class="row">
-            <div class="tab-wrap col">
-              <ul class="tab-menu p-0 m-0">
-                <li><a href="#tab1" class="active">テンプレートを使用しない</a></li>
-                <li><a href="#tab2" class="">キャンプレイアウト</a></li>
-                <li><a href="#tab3" class="">キャンプ飯</a></li>
-                <li><a href="#tab4" class="">キャンプ場</a></li>
-              </ul>
-              <div class="tab-contents">
-                <div id="tab1" class="tab"></div>
-                <div id="tab2" class="tab">
-                  <%= f.fields_for :camp_layout do |camp_layout_form| %>
-                    <%= render 'public/camp_layouts/post_template_camp_layout', f: camp_layout_form %>
-                  <% end %>
-                </div>
-                <div id="tab3" class="tab">
-                  <%= f.fields_for :camp_meal do |camp_meal_form| %>
-                    <%= render 'public/camp_meals/post_template_camp_meal', f: camp_meal_form %>
-                  <% end %>
-                </div>
-                <div id="tab4" class="tab">
-                  <%= render 'public/campsites/post_template_campsite', f: f %>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col">
-              <%= f.text_area :body, rows: "6", placeholder: "投稿内容を入力してください。", class: "form-control border-secondary" %>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <%= f.submit "投稿する", class: "btn btn-outline-primary" %>
-            </div>
-          </div>
-        <% end %>
       </div>
     </div>
-
   </div>
 </div>

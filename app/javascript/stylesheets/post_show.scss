@@ -1,0 +1,28 @@
+@charset "UTF-8"
+
+.swiper_show {
+  width: 720px;
+  height: 480px;
+  margin-left: 0;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.gear_image_show {
+  width: 150px !important;
+  height: 100px;
+}
+
+.gear_image_show img {
+  object-fit: cover;
+}
+
+.swiper_show_meal {
+  width: 450px;
+  height: 300px;
+  margin-left: 0;
+}

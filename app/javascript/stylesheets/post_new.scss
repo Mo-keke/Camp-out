@@ -1,0 +1,311 @@
+@charset "UTF-8"
+
+//タブメニューのCSS
+.wrap {
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.tab-menu {
+  display: flex;
+}
+
+.tab-menu li {
+  list-style-type: none;
+  width: 25%;
+}
+
+.tab-menu li a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 20px 5px;
+  text-align: center;
+  background: #000;
+  border: 1px solid #000;
+  border_bottom: none;
+}
+
+.tab-menu .active {
+  background: #fff;
+  color: #000;
+}
+
+.tab-contents {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tab-contents .tab {
+  width: 100%;
+  background: #fff;
+  border: 1px solid #000;
+  border-top: none;
+}
+
+.tab-contents #tab1 {
+  padding: 30px;
+}
+
+
+// swiperのCSS
+.swiper_post {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 450px;
+  height: 300px;
+  z-index: 1;
+}
+
+.swiper-button-next::after, .swiper-button-prev::after {
+  display: none;
+}
+
+.swiper-button-next i, .swiper-button-prev i {
+  color: #FFF;
+  opacity: 0.8;
+  filter: drop-shadow(0 0 3px #808080);
+}
+
+:root {
+  --swiper-navigation-color: #ffffff;
+  --swiper-pagination-color: #ffffff;
+}
+
+
+// テンプレートのCSS
+label {
+  font-weight: bold;
+}
+
+.add_file_field label {
+  font-weight: normal;
+}
+
+.template_container {
+  margin: 30px;
+}
+
+.image_container {
+  position: relative;
+  width: 450px;
+  height: 300px;
+  margin-bottom: 20px;
+}
+
+.image_container label {
+  cursor: pointer;
+}
+
+.create_file_field {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 450px;
+  height: 300px;
+  border: 1px solid #000;
+  z-index: 2;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.create_file_field:hover {
+  background: rgba(128, 128, 128, 0.5);
+  transition: all 0.5s;
+}
+
+.create_file_field i {
+  color: rgba(0, 0, 0, 0.8);
+  margin-top: 40px;
+}
+
+.create_file_field h2 {
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 20px;
+}
+
+.hidden_file_field {
+  display: none;
+}
+
+.add_file_field {
+  position: absolute;
+  top: 300px;
+  left: 230px;
+  width: 100px;
+}
+
+.add_file_field label {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.remove_image_button {
+  position: absolute;
+  top: 300px;
+  left: 350px;
+  width: 100px;
+}
+
+.add_file_field label, .remove_image_button {
+  cursor: pointer;
+}
+
+.links {
+  text-align: right;
+}
+
+.links a {
+  color: #000;
+  text-decoration: none;
+}
+
+.links a:hover {
+  background: #D3D3D3;
+  transition: all 0.2s;
+}
+
+
+.remove-btn {
+  color: #808080;
+}
+
+.remove-btn:hover {
+  color: #000;
+  transition: all 0.2s;
+}
+
+
+.gear_label, .ingredient_label, .rating_label {
+  color: #212529;
+  font-weight: bold;
+  margin-bottom: 7px;
+}
+
+.body_form {
+  margin-bottom: 20px
+}
+
+
+
+// キャンプギアフォームのCSS
+.camp_gear_container {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.gear_image_field {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 156px;
+  height: 104px;
+  border: 1px solid #000;
+  z-index: 2;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.gear_image_field:hover {
+  background: rgba(128, 128, 128, 0.5);
+  transition: all 0.5s;
+}
+
+.gear_image_field label {
+  cursor: pointer;
+}
+
+.gear_image_field i {
+  color: rgba(0, 0, 0, 0.8);
+  margin-top: 40px;
+}
+
+.gear_image_field p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+}
+
+.image_preview_field {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 156px;
+  height: 104px;
+  z-index: 1;
+}
+
+.gear_image_edit_button {
+  position: absolute;
+  top: 55px;
+  left: 162px;
+  color: #808080;
+  cursor: pointer;
+}
+
+.gear_image_remove_button {
+  position: absolute;
+  top: 83px;
+  left: 160px;
+  color: #808080;
+  cursor: pointer;
+}
+
+.gear_image_edit_button:hover, .gear_image_remove_button:hover {
+  color: #000;
+  transition: all 0.2s;
+}
+
+.gear_form_field {
+  margin-left: 190px;
+  padding-right: 12px;
+}
+
+.gear_description_form {
+  margin-top: 5px;
+}
+
+.gear_remove_btn {
+  position: absolute;
+  top: 79%;
+  left: 99%;
+}
+
+
+
+// 材料フォームのCSS
+.ingredient_container {
+  margin-bottom: 20px;
+}
+
+.ingredient_form_field {
+  position: relative;
+  margin-bottom: 10px;
+  display: flex;
+}
+
+.ingredient_name_field {
+  width: 48%;
+}
+
+.ingredient_amount_field {
+  width: 50%;
+  padding-right: 12px;
+  margin-left: 2%;
+}
+
+.ingredient_remove_btn {
+  position: absolute;
+  top: 45%;
+  left: 99%;
+}

@@ -20,6 +20,33 @@
               <%= post.body %>
             </div>
           </div>
+          <% if post.camp_layout.present? %>
+            <div class="row">
+              <div class="col-auto">
+                <div class="template_button template_button_red px-2 mt-2">
+                  タイトル： <strong><%= post.camp_layout.title %></strong> の詳細を見る
+                </div>
+              </div>
+            </div>
+          <% end %>
+          <% if post.camp_meal.present? %>
+            <div class="row">
+              <div class="col-auto">
+                <div class="template_button template_button_yellow px-2 mt-2">
+                  料理名： <strong><%= post.camp_meal.name %></strong> の詳細を見る
+                </div>
+              </div>
+            </div>
+          <% end %>
+          <% if post.campsite.present? %>
+            <div class="row">
+              <div class="col-auto">
+                <div class="template_button template_button_blue px-2 mt-2">
+                  キャンプ場名： <strong><%= post.campsite.name %></strong> の詳細を見る
+                </div>
+              </div>
+            </div>
+          <% end %>
         <% end %>
         <div class="row mt-auto">
           <div class="col">

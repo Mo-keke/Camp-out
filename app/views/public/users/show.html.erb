@@ -8,39 +8,37 @@
 
     <!-- 対象ユーザーのプロフィール・投稿一覧を表示 -->
     <div class="col-6 offset-1 mt-4">
-      <div class="container">
-        <div class="row mb-3">
-          <div class="col">
-            <h5>&lt;<%= @target_user.name %>のプロフィール&gt;</h5>
-          </div>
+      <div class="row mb-3">
+        <div class="col">
+          <h5>&lt;<%= @target_user.name %>のプロフィール&gt;</h5>
         </div>
-        <div class="row pb-2 mb-4 border-bottom">
-          <div class="col-auto" style="width: 200px;">
-            <%= image_tag @target_user.get_profile_image(200, 200) %>
-          </div>
-          <div class="col ms-4">
-            <div class="container">
-              <div class="row mb-3">
-                <div class="col">
-                  <h3><%= @target_user.name %></h3>
-                </div>
+      </div>
+      <div class="row pb-2 mb-4 border-bottom">
+        <div class="col-auto" style="width: 200px;">
+          <%= image_tag @target_user.get_profile_image(200, 200) %>
+        </div>
+        <div class="col ms-4">
+          <div class="container">
+            <div class="row mb-3">
+              <div class="col">
+                <h3><%= @target_user.name %></h3>
               </div>
-              <div class="row">
-                <div class="col">
-                  <h5><%= @target_user.introduction %></h5>
-                </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <h5><%= @target_user.introduction %></h5>
               </div>
             </div>
           </div>
         </div>
-
-        <div class="row mb-3">
-          <div class="col">
-            <h5>&lt;<%= @target_user.name %>の投稿一覧&gt;</h5>
-          </div>
-        </div>
-        <%= render 'public/posts/posts_index', posts: @posts %>
       </div>
+
+      <div class="row mb-3">
+        <div class="col">
+          <h5>&lt;<%= @target_user.name %>の投稿一覧&gt;</h5>
+        </div>
+      </div>
+      <%= render 'public/posts/posts_index', posts: @posts %>
     </div>
 
   </div>

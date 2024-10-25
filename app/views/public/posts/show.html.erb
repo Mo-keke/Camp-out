@@ -8,95 +8,106 @@
 
     <!-- 投稿詳細を表示 -->
     <div class="col-6 offset-1 mt-4">
-      <div class="container">
-        <div class="row mb-3">
-          <div class="col">
-            <p class="text-success"><%= flash[:success] %></p>
-          </div>
+      <div class="row mb-3">
+        <div class="col">
+          <p class="text-success"><%= flash[:success] %></p>
         </div>
-        <div class="row pb-4 mb-4 border-bottom">
-          <div class="col-auto" style="width: 100px;">
-             <%= link_to user_path(@post.user_id) do %>
-              <%= image_tag @post.user.get_profile_image(100, 100) %>
-            <% end %>
-          </div>
-          <div class="col ms-4">
-            <div class="container h-100 d-flex flex-column">
+      </div>
+      <div class="row pb-4 mb-4 border-bottom">
+        <div class="col-auto" style="width: 100px;">
+           <%= link_to user_path(@post.user_id) do %>
+            <%= image_tag @post.user.get_profile_image(100, 100) %>
+          <% end %>
+        </div>
+        <div class="col ms-4">
+          <div class="container h-100 d-flex flex-column">
+            <div class="row">
+              <div class="col fw-bold">
+                <%= link_to user_path(@post.user_id), class: "link-dark link-underline-opacity-0 link-underline-opacity-100-hover" do %>
+                  <%= @post.user.name %>
+                <% end %>
+              </div>
+            </div>
+            <%= link_to post_path(@post.id), class: "link-dark link-underline-opacity-0 link-underline-opacity-100-hover" do %>
               <div class="row">
-                <div class="col fw-bold">
-                  <%= link_to user_path(@post.user_id), class: "link-dark link-underline-opacity-0 link-underline-opacity-100-hover" do %>
-                    <%= @post.user.name %>
-                  <% end %>
-                </div>
-              </div>
-              <%= link_to post_path(@post.id), class: "link-dark link-underline-opacity-0 link-underline-opacity-100-hover" do %>
-                <div class="row">
-                  <div class="col">
-                    <%= @post.body %>
-                  </div>
-                </div>
-              <% end %>
-              <div class="row mt-auto">
                 <div class="col">
-                  <%= @post.created_at %>
+                  <%= @post.body %>
                 </div>
+              </div>
+            <% end %>
+            <div class="row mt-auto">
+              <div class="col">
+                <%= @post.created_at %>
               </div>
             </div>
           </div>
-          <% if user_signed_in? %> <!-- ログイン時 → ブックマークの作成・削除（非同期通信）-->
-            <div class="col-auto ms-auto px-0">
-              <div class="container h-100 d-flex flex-column">
-                <div class="row  mt-auto">
-                  <div class="book_mark_button col px-0">
-                    <%= render 'public/book_marks/book_mark_button', post: @post %>
-                  </div>
+        </div>
+        <% if user_signed_in? %> <!-- ログイン時 → ブックマークの作成・削除（非同期通信）-->
+          <div class="col-auto ms-auto px-0">
+            <div class="container h-100 d-flex flex-column">
+              <div class="row  mt-auto">
+                <div class="book_mark_button col px-0">
+                  <%= render 'public/book_marks/book_mark_button', post: @post %>
                 </div>
               </div>
-            </div>
-          <% end %>
-          <% if @post.user == current_user %>
-            <div class="col-auto ms-2 px-0">
-              <div class="container h-100 d-flex flex-column">
-                <div class="row  mt-auto">
-                  <div class="col px-0">
-                    <%= link_to post_path(@post.id), method: :delete do %>
-                      <i class="fa-solid fa-trash fa-lg" style="color: #dd1155;"></i>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
-            </div>
-          <% end %>
-        </div>
-
-        <!-- コメント一覧・コメント投稿フォームを表示 -->
-        <div class="row mb-3">
-          <div class="col">
-            <h5><コメント></h5>
-          </div>
-        </div>
-        <div class="row">
-          <div class="post_comment_index col">
-            <%= render 'public/post_comments/post_comment_index', post_comments: @post_comments %>
-          </div>
-        </div>
-        <%= form_with model: [@post, @post_comment], url: post_post_comments_path(@post.id), method: :post, local: false do |f| %>
-          <div class="row mb-3">
-            <div class="col">
-              <%= f.text_area :comment, rows: "3", placeholder: "コメントを入力してください。", class: "form-control border-secondary" %>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <% if user_signed_in? %>
-                <%= f.submit "コメントする", class: "btn btn-outline-primary" %>
-              <% else %>
-                <button type="button" class="btn btn-outline-danger" disabled>コメントするにはログインが必要です</button>
-              <% end %>
             </div>
           </div>
         <% end %>
+        <% if @post.user == current_user %>
+          <div class="col-auto ms-2 px-0">
+            <div class="container h-100 d-flex flex-column">
+              <div class="row  mt-auto">
+                <div class="col px-0">
+                  <%= link_to post_path(@post.id), method: :delete do %>
+                    <i class="fa-solid fa-trash fa-lg" style="color: #dd1155;"></i>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
+        <% if @post.camp_layout.present? %>
+          <%= render 'public/camp_layouts/show_camp_layout', post: @post %>
+        <% end %>
+
+        <% if @post.camp_meal.present? %>
+          <%= render 'public/camp_meals/show_camp_meal', post: @post %>
+        <% end %>
+
+        <% if @post.campsite.present? %>
+          <%= render 'public/campsites/show_campsite', post: @post %>
+        <% end %>
+
       </div>
+
+      <!-- コメント一覧・コメント投稿フォームを表示 -->
+      <div class="row mb-3">
+        <div class="col">
+          <h5><コメント></h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="post_comment_index col">
+          <%= render 'public/post_comments/post_comment_index', post_comments: @post_comments %>
+        </div>
+      </div>
+      <%= form_with model: [@post, @post_comment], url: post_post_comments_path(@post.id), method: :post, local: false do |f| %>
+        <div class="row mb-3">
+          <div class="col">
+            <%= f.text_area :comment, rows: "3", placeholder: "コメントを入力してください。", class: "form-control border-secondary" %>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            <% if user_signed_in? %>
+              <%= f.submit "コメントする", class: "btn btn-outline-primary" %>
+            <% else %>
+              <button type="button" class="btn btn-outline-danger" disabled>コメントするにはログインが必要です</button>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
     </div>
 
   </div>

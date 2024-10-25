@@ -6,14 +6,12 @@
 
     <!-- 自身とフォロー中ユーザーの投稿を表示 -->
     <div class="col-6 offset-1 mt-4">
-      <div class="container">
-        <div class="row mb-3">
-          <div class="col">
-            <h5><フォロー中ユーザの投稿></h5>
-          </div>
+      <div class="row mb-3">
+        <div class="col">
+          <h5><フォロー中ユーザの投稿></h5>
         </div>
-        <%= render 'public/posts/posts_index', posts: @posts %>
       </div>
+      <%= render 'public/posts/posts_index', posts: @posts %>
     </div>
 
   </div>

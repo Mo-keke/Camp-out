@@ -43,11 +43,11 @@ Rails.application.routes.draw do
     # book_marks
     resources :book_marks, only: [:index]
     # camp_layouts
-    resources :camp_layouts, only: [:index]
+    resources :camp_layouts, only: [:index, :create]
     # camp_meals
-    resources :camp_meals, only: [:index]
+    resources :camp_meals, only: [:index, :create]
     # campsites
-    resources :campsites, only: [:index]
+    resources :campsites, only: [:index, :create]
     # reports
     resources :reports, only: [:new, :create]
     # inquiries

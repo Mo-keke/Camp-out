@@ -11,11 +11,14 @@ import "jquery";
 import cocoon from "@nathanvda/cocoon";
 import Swiper from 'swiper/swiper-bundle.js';
 import 'swiper/swiper-bundle.css';
+import 'jquery-raty-js'
 import "../script.js";
 import "../stylesheets/application";
-import "../stylesheets/posts";
+import "../stylesheets/post_new";
+import "../stylesheets/post_show";
 // import "popper.js";
 // import "bootstrap";
+
 
 Rails.start()
 Turbolinks.start()

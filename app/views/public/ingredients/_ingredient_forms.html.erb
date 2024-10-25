@@ -1,13 +1,13 @@
-<div class="nested-fields">
-  <div class="row mb-3">
-    <div class="col">
+<div class="nested-fields ingredient_nested_fields">
+  <div class="ingredient_form_field">
+    <div class="ingredient_name_field">
       <%= f.text_field :ingredient, placeholder: "材料名（例：にんじん）", class: "form-control border-secondary" %>
     </div>
-  </div>
-  <div class="row mb-3">
-    <div class="col">
+    <div class="ingredient_amount_field">
       <%= f.text_field :amount,  placeholder: "分量（例：100g、1/2切）", class: "form-control border-secondary" %>
     </div>
+    <%= link_to_remove_association f, class: "remove-btn ingredient_remove_btn" do %>
+      <i class="fa-solid fa-trash"></i>
+    <% end %>
   </div>
-  <%= link_to_remove_association "削除", f, class: "remove-btn" %>
 </div>

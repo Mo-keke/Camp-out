@@ -1,0 +1,67 @@
+<div class="row mt-4 mb-2">
+  <div class="col">
+    <h5><キャンプレイアウト></h5>
+  </div>
+</div>
+<div class="row">
+  <div class="col-auto pe-0">
+    <h5>タイトル：</h5>
+  </div>
+  <div class="col">
+    <h5><%= post.camp_layout.title %></h5>
+  </div>
+</div>
+<div class="row pe-0 mb-3">
+  <div class="col pe-0">
+    <div id="layout-swiper-container-show" class="swiper swiper_show">
+      <div class="swiper-wrapper">
+        <% post.camp_layout.camp_layout_images.each do |camp_layout_image| %>
+          <div class="swiper-slide">
+            <%= image_tag camp_layout_image, size: "720×480" %>
+          </div>
+        <% end %>
+      </div>
+      <div class="swiper-button-next"><i class="fa-solid fa-circle-chevron-right fa-2x"></i></div>
+      <div class="swiper-button-prev"><i class="fa-solid fa-circle-chevron-left fa-2x"></i></div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-auto pe-0">
+    <h5>説明：</h5>
+  </div>
+  <div class="col">
+    <%=safe_join(post.camp_layout.description.split("\n"),tag(:br))%>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <h5>キャンプギア：</h5>
+  </div>
+  <% post.camp_layout.camp_gears.each do |camp_gear| %>
+    <div class="row mb-1">
+      <div class="gear_image_show col-auto">
+        <%= image_tag camp_gear.get_camp_gear_image(150, 100) %>
+      </div>
+      <div class="col ms-3">
+        <div class="row mt-2 mb-1">
+          <div class="col-auto pe-0">
+            ギアの名前：
+          </div>
+          <div class="col">
+            <%= camp_gear.name %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-auto pe-0">
+            ギアの説明：
+          </div>
+          <div class="col">
+            <%=safe_join(camp_gear.description.split("\n"),tag(:br))%>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

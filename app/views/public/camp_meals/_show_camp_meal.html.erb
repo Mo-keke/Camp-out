@@ -1,0 +1,70 @@
+<div class="row mt-4 mb-2">
+  <div class="col">
+    <h5><キャンプ飯></h5>
+  </div>
+</div>
+<div class="row">
+  <div class="col-auto pe-0">
+    <h5>料理名：</h5>
+  </div>
+  <div class="col">
+    <h5><%= post.camp_meal.name %></h5>
+  </div>
+</div>
+<div class="row mb-3">
+  <div class="col-auto">
+    <div id="meal-swiper-container-show" class="swiper swiper_show_meal">
+      <div class="swiper-wrapper">
+        <% post.camp_meal.camp_meal_images.each do |camp_meal_image| %>
+          <div class="swiper-slide">
+            <%= image_tag camp_meal_image, size: "450x300" %>
+          </div>
+        <% end %>
+      </div>
+      <div class="swiper-button-next"><i class="fa-solid fa-circle-chevron-right fa-2x"></i></div>
+      <div class="swiper-button-prev"><i class="fa-solid fa-circle-chevron-left fa-2x"></i></div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="row">
+      <div class="col">
+        <h5>材料と分量：</h5>
+      </div>
+      <% post.camp_meal.ingredients.each do |ingredient| %>
+        <div class="row mb-1">
+          <div class="col">
+            <%= ingredient.ingredient %>
+          </div>
+          <div class="col ms-auto">
+            <%= ingredient.amount %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-auto pe-0">
+    <h5>説明：</h5>
+  </div>
+  <div class="col">
+    <%=safe_join(post.camp_meal.description.split("\n"),tag(:br))%>
+  </div>
+</div>
+<div class="row">
+  <div class="col-auto pe-0">
+    <h5>レシピ：</h5>
+  </div>
+  <div class="col">
+    <%=safe_join(post.camp_meal.recipe.split("\n"),tag(:br))%>
+  </div>
+</div>
+<div class="row">
+  <div class="col-auto pe-0">
+    <h5>所要時間：</h5>
+  </div>
+  <div class="col">
+    <%= post.camp_meal.time_required %>分
+  </div>
+</div>

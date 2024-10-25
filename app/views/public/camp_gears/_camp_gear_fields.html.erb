@@ -1,23 +1,33 @@
-<div class="nested-fields">
-  <div class="row mb-3">
-    <div class="col">
-      <%= f.label :camp_gear_images do %>
-        <div class="border border-secondary px-5 py-3">
-          <i class="fa-solid fa-camera"></i>
-        </div>
+<div class="nested-fields gear_nested_fields">
+  <div class="camp_gear_container">
+    <div class="gear_image_field">
+      <%= f.label :camp_gear_image do %>
+        <i class="fa-solid fa-camera fa-2x"></i>
+        <p>クリックして写真を追加</p>
       <% end %>
-      <%= f.file_field :camp_gear_images, accept: "image/*", :multiple => true, class: "hidden_file_field" %>
+      <%= f.file_field :camp_gear_image, accept: "image/*", class: "hidden_file_field gear_hidden_file_field_create" %>
     </div>
-  </div>
-  <div class="row mb-3">
-    <div class="col">
-      <%= f.text_field :name, placeholder: "キャンプギア名", class: "form-control border-secondary" %>
+    <div class="image_preview_field"></div>
+    <div class="gear_image_edit_button">
+      <%= f.label :camp_gear_image do %>
+        <i class="fa-solid fa-pen-to-square"></i>
+      <% end %>
+      <%= f.file_field :camp_gear_image, accept: "image/*", class: "hidden_file_field gear_hidden_file_field_edit" %>
     </div>
-  </div>
-  <div class="row mb-3">
-    <div class="col">
-      <%= f.text_area :description, rows: "4", placeholder: "ここにキャンプギアの概要・説明を記入します。", class: "form-control border-secondary" %>
+    <div class="gear_image_remove_button">
+      <i class=" fa-solid fa-trash fa-lg"></i>
     </div>
+
+    <div class="gear_form_field">
+      <div class="gear_name_form">
+        <%= f.text_area :name, rows: "1", placeholder: "キャンプギア名", class: "form-control border-secondary" %>
+      </div>
+      <div class="gear_description_form">
+        <%= f.text_area :description, rows: "2", placeholder: "ここにキャンプギアの概要・説明を記入します。", class: "form-control border-secondary" %>
+      </div>
+    </div>
+    <%= link_to_remove_association f, class: "remove-btn gear_remove_btn" do %>
+      <i class="fa-solid fa-trash fa-lg"></i>
+    <% end %>
   </div>
-  <%= link_to_remove_association "削除", f, class: "remove-btn" %>
 </div>
