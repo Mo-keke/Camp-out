@@ -51,6 +51,7 @@ Rails.application.routes.draw do
     # reports
     resources :reports, only: [:new, :create]
     # inquiries
+    get '/inquiries/complete' => 'inquiries#complete', as: 'complete_inquiry'
     resources :inquiries, only: [:new, :create]
   end
 
@@ -59,7 +60,7 @@ Rails.application.routes.draw do
     # homes
     get '/' => 'homes#top', as: 'top'
     # users
-    resources :users, only: [:index, :show]
+    resources :users, only: [:index, :show, :update]
     # searches
     get '/user_search_result' => 'searches#search', as: 'search'
     # reports

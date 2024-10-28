@@ -1,2 +1,60 @@
-<h1>Admin::Users#index</h1>
-<p>Find me in app/views/admin/users/index.html.erb</p>
+<div class="container-fluid">
+  <div class="row m-4">
+    <div class="col-auto offset-2 d-inline-block my-2">
+      <h5><ユーザー一覧></h5>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-8 offset-2">
+      <table class="table">
+        <thead class="table-secondary">
+          <tr>
+            <th class="col-2 ps-4 text-left align-middle">ユーザーID</th>
+            <th class="col-1 text-left align-middle">アイコン</th>
+            <th class="col-3 text-left align-middle">ユーザー名</th>
+            <th class="col-4 text-left align-middle">メールアドレス</th>
+            <th class="col-2 text-left align-middle">会員ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td class="ps-5 text-left align-middle"><%= user.id %></td>
+              <td class="text-left align-middle">
+                <%= link_to admin_user_path(user.id) do %>
+                  <%= image_tag user.get_profile_image(50, 50) %>
+                <% end %>
+              </td>
+              <td class="text-left align-middle">
+                <%= link_to admin_user_path(user.id), class: "link-dark link-underline-opacity-0 link-underline-opacity-100-hover" do %>
+                  <%= user.name %>
+                <% end %>
+              </td>
+              <td class="text-left align-middle">
+                <%= link_to admin_user_path(user.id), class: "link-dark link-underline-opacity-0 link-underline-opacity-100-hover" do %>
+                  <%= user.email %>
+                <% end %>
+              </td>
+              <td class="text-left align-middle">
+                <% if user.is_active %>
+                  <%= link_to admin_user_path(user.id), class: "link-dark link-underline-opacity-0 link-underline-opacity-100-hover" do %>
+                    <p class="text-success font-weight-bold mb-1">有効</p>
+                  <% end %>
+                <% else %>
+                  <%= link_to admin_user_path(user.id), class: "link-dark link-underline-opacity-0 link-underline-opacity-100-hover" do %>
+                    <p class="text-danger font-weight-bold mb-1">アカウント停止中</p>
+                  <% end %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="pagination d-flex justify-content-center">
+    <%= paginate @users %>
+  </div>
+</div>

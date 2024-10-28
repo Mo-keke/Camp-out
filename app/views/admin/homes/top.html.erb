@@ -1,2 +1,129 @@
-<h1>Admin: :Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<div class="container">
+  <div class="row mt-3">
+    <div class="col">
+      <h4>管理者トップページ</h4>
+    </div>
+  </div>
+  <div class="user_index">
+    <div class="row m-4 mt-2">
+      <div class="col-auto offset-2 d-inline-block mt-2">
+        <h5><ユーザー新着></h5>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-8 offset-2">
+        <table class="table">
+          <thead class="table-secondary">
+            <tr>
+              <th class="col-2 ps-4 text-left align-middle">ユーザーID</th>
+              <th class="col-1 text-left align-middle">アイコン</th>
+              <th class="col-3 text-left align-middle">ユーザー名</th>
+              <th class="col-4 text-left align-middle">メールアドレス</th>
+              <th class="col-2 text-left align-middle">会員ステータス</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @users.each do |user| %>
+              <tr>
+                <td class="ps-5 text-left align-middle"><%= user.id %></td>
+                <td class="text-left align-middle">
+                  <%= link_to admin_user_path(user.id) do %>
+                    <%= image_tag user.get_profile_image(50, 50) %>
+                  <% end %>
+                </td>
+                <td class="text-left align-middle">
+                  <%= link_to admin_user_path(user.id), class: "link-dark link-underline-opacity-0 link-underline-opacity-100-hover" do %>
+                    <%= user.name %>
+                  <% end %>
+                </td>
+                <td class="text-left align-middle">
+                  <%= link_to admin_user_path(user.id), class: "link-dark link-underline-opacity-0 link-underline-opacity-100-hover" do %>
+                    <%= user.email %>
+                  <% end %>
+                </td>
+                <td class="text-left align-middle">
+                  <% if user.is_active %>
+                    <%= link_to admin_user_path(user.id), class: "link-dark link-underline-opacity-0 link-underline-opacity-100-hover" do %>
+                      <p class="text-success font-weight-bold mb-1">有効</p>
+                    <% end %>
+                  <% else %>
+                    <%= link_to admin_user_path(user.id), class: "link-dark link-underline-opacity-0 link-underline-opacity-100-hover" do %>
+                      <p class="text-danger font-weight-bold mb-1">アカウント停止中</p>
+                    <% end %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+        <div class="d-flex justify-content-end">
+          <%= link_to "ユーザー一覧へ", admin_users_path, class: "fs-6 fw-bold link-dark link-underline-opacity-0 link-underline-opacity-100-hover" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="inquiry_index">
+    <div class="row m-4">
+      <div class="col-auto offset-2 d-inline-block mt-2">
+        <h5><お問い合わせ新着></h5>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-8 offset-2">
+        <table class="table">
+          <thead class="table-secondary">
+            <tr>
+              <th class="col-6 ps-4 text-left align-middle">お問い合わせタイトル</th>
+              <th class="col-3 text-left align-middle">ユーザー</th>
+              <th class="col-3 text-left align-middle">メールアドレス</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @inquiries.each do |inquiry| %>
+              <tr>
+                <td class="ps-4 text-left align-middle fw-bold">
+                  <%= link_to admin_inquiry_path(inquiry.id), class: "link-dark link-underline-opacity-0 link-underline-opacity-100-hover" do %>
+                    <%= inquiry.title %>
+                  <% end %>
+                </td>
+                <td class="text-left align-middle">
+                  <% if inquiry.user %>
+                    <div class="row d-flex justify-content-left align-items-center">
+                      <div class="col-auto" style="width: 50px">
+                        <%= link_to admin_user_path(inquiry.user_id) do %>
+                          <%= image_tag inquiry.user.get_profile_image(50, 50) %>
+                        <% end %>
+                      </div>
+                      <div class="col-auto mx-2">
+                        <%= link_to admin_user_path(inquiry.user_id), class: "link-dark link-underline-opacity-0 link-underline-opacity-100-hover" do %>
+                          <%= inquiry.user.name %>
+                        <% end %>
+                      </div>
+                    </div>
+                  <% else %>
+                    <div class="row" style="height: 50px;"></div>
+                  <% end %>
+                </td>
+                <td class="text-left align-middle">
+                  <%= link_to admin_inquiry_path(inquiry.id), class: "link-dark link-underline-opacity-0 link-underline-opacity-100-hover" do %>
+                    <%= inquiry.email %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+        <div class="d-flex justify-content-end">
+          <%= link_to "お問い合わせ一覧へ", admin_users_path, class: "fs-6 fw-bold link-dark link-underline-opacity-0 link-underline-opacity-100-hover" %>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>

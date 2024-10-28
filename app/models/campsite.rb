@@ -8,6 +8,16 @@ class Campsite < ApplicationRecord
 
   before_validation :create_post
 
+  def get_campsite_images(width, height)
+    campsite_images.map do |image|
+      image.variant(resize_to_fill: [width, height]).processed
+    end
+  end
+
+  def first_campsite_image(width, height)
+    campsite_images.first&.variant(resize_to_fill: [width, height])
+  end
+
   private
 
   def create_post

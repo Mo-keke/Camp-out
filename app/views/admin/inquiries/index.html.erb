@@ -1,0 +1,59 @@
+<div class="container-fluid">
+  <div class="row m-4">
+    <div class="col-auto offset-2 d-inline-block my-2">
+      <h5><お問い合わせ一覧> (新着順)</h5>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-8 offset-2">
+      <table class="table">
+        <thead class="table-secondary">
+          <tr>
+            <th class="col-6 ps-4 text-left align-middle">お問い合わせタイトル</th>
+            <th class="col-3 text-left align-middle">ユーザー</th>
+            <th class="col-3 text-left align-middle">メールアドレス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @inquiries.each do |inquiry| %>
+            <tr>
+              <td class="ps-4 text-left align-middle fw-bold">
+                <%= link_to admin_inquiry_path(inquiry.id), class: "link-dark link-underline-opacity-0 link-underline-opacity-100-hover" do %>
+                  <%= inquiry.title %>
+                <% end %>
+              </td>
+              <td class="text-left align-middle">
+                <% if inquiry.user %>
+                  <div class="row d-flex justify-content-left align-items-center">
+                    <div class="col-auto" style="width: 50px">
+                      <%= link_to admin_user_path(inquiry.user_id) do %>
+                        <%= image_tag inquiry.user.get_profile_image(50, 50) %>
+                      <% end %>
+                    </div>
+                    <div class="col-auto mx-2">
+                      <%= link_to admin_user_path(inquiry.user_id), class: "link-dark link-underline-opacity-0 link-underline-opacity-100-hover" do %>
+                        <%= inquiry.user.name %>
+                      <% end %>
+                    </div>
+                  </div>
+                <% else %>
+                  <div class="row" style="height: 50px;"></div>
+                <% end %>
+              </td>
+              <td class="text-left align-middle">
+                <%= link_to admin_inquiry_path(inquiry.id), class: "link-dark link-underline-opacity-0 link-underline-opacity-100-hover" do %>
+                  <%= inquiry.email %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="pagination d-flex justify-content-center">
+    <%= paginate @inquiries %>
+  </div>
+</div>

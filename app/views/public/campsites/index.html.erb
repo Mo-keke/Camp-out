@@ -1,2 +1,69 @@
-<h1>Public::Campsites#index</h1>
-<p>Find me in app/views/public/campsites/index.html.erb</p>
+<div class="container">
+  <div class="row d-flex justify-content-center mt-2 mb-5">
+    <div class="col-auto mx-auto">
+      <div id="flipbook" class="site_book">
+      	<div class="cover">
+      	  <h5>みんなのキャンプ場</h5>
+      	</div>
+      	<% @campsites.each do |campsite| %>
+      	  <div class="page page_odd">
+      	    <div class="site_top_left">
+      	      <div class="site_name">
+        	      <%= campsite.name %>
+        	    </div>
+      	    </div>
+      	    <div class="flex">
+      	      <div class="site_left">
+      	        <div class="user site_user">
+        	        <%= image_tag campsite.post.user.get_profile_image(50, 50) %>
+        	        <%= campsite.post.user.name %>
+        	      </div>
+                <div class="site_description">
+      	          <h5>キャンプ場の概要</h5>
+          	      <%= campsite.description %>
+          	    </div>
+      	      </div>
+      	      <div class="site_image_odd" style="background-image: url('<%= url_for(campsite.first_campsite_image(750, 500)) %>');"></div>
+      	    </div>
+      	  </div>
+      	  <div class="page page_even">
+      	    <div class="site_top_right">
+      	      <div class="site_address">
+      	        <h5>住所</h5>
+      	        <div><%= campsite.address %></div>
+      	      </div>
+      	      <div class="site_review">
+      	        <h5>評価</h5>
+      	        <div id="index_raty_<%= campsite.id %>"></div>
+      	        <script>
+      	          document.addEventListener("turbolinks:load", function() {
+                    $('#index_raty_<%= campsite.id %>').raty({
+                      size: 36,
+                      starOff: '<%= asset_path('star-off.png') %>',
+                      starOn: '<%= asset_path('star-on.png') %>',
+                      starHalf: '<%= asset_path('star-half.png') %>',
+                      half: true,
+                      readOnly: true,
+                      number: 5,
+                      score: <%= campsite.review %>
+                    });
+                  });
+      	        </script>
+      	      </div>
+      	    </div>
+            <div class="site_image_even" style="background-image: url('<%= url_for(campsite.first_campsite_image(750, 500)) %>');"></div>
+      	  </div>
+      	<% end %>
+      	<div class="back_cover"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+	$("#flipbook").turn({
+	  width: 930,
+		height: 620,
+	});
+</script>

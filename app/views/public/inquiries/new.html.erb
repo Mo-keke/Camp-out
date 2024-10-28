@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row mt-3 mb-4">
+    <div class="col">
+      <h5><お問い合わせ></h5>
+    </div>
+  </div>
+  <% if flash[:alert] %>
+    <div class="rowmb-3">
+      <div class="col">
+        <%= flash[:alert] %>
+      </div>
+    </div>
+  <% end %>
+  <div class="row mb-4">
+    <div class="col">
+      <h5>
+        以下のフォームより、お気軽にお問い合わせください。<br>
+        お問い合わせいただいた内容につきましては基本返信しておりませんが、返信を要するものにつきましてはご登録いただいているメールアドレスへ3営業日以内にご連絡いたします。（土・日・祝日は、メールによる回答は対応しておりません。）<br>
+        ログインしていない、またはログインに使用しているメールアドレスと異なるアドレスをご使用の場合はアドレス欄にご記入ください。<br>
+        ※記入いただいた個人情報は、ご本人の同意なく第三者に提供することはございません。
+      </h5>
+    </div>
+  </div>
+  <%= form_with model: @inquiry do |f| %>
+    <div class="row mb-2">
+      <div class="col-2">
+        <%= f.label :email, "メールアドレス：", class: "form-label" %>
+      </div>
+      <div class="col-10">
+        <%= f.text_field :email, class: "form-control border-secondary" %>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <div class="col-2">
+        <%= f.label :title, "お問い合わせタイトル：", class: "form-label" %>
+      </div>
+      <div class="col-10">
+        <%= f.text_field :title, autofocus: true, class: "form-control border-secondary" %>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-2">
+        <%= f.label :content, "お問い合わせ内容：", class: "form-label" %>
+      </div>
+      <div class="col-10">
+        <%= f.text_area :content, rows: "6", class: "form-control border-secondary" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col offset-2">
+        <%= f.submit "送信する",  class: "submit_button btn btn-outline-dark" %>
+      </div>
+    </div>
+  <% end %>
+</div>

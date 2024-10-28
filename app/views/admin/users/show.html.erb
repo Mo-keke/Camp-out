@@ -1,2 +1,190 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<div class="container">
+  <div class="row pb-2 mb-4 border-bottom">
+    <div class="col">
+      <div class="row my-3">
+        <div class="col">
+          <h5>&lt;<%= @user.name %>のユーザー詳細&gt;</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-auto" style="width: 150px;">
+          <%= image_tag @user.get_profile_image(150, 150) %>
+        </div>
+        <div class="col ms-4">
+          <div class="container">
+            <div class="row mb-3">
+              <div class="col">
+                <h4><%= @user.name %></h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <h6><%= @user.introduction %></h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-2">
+      <%= form_with model: @user, url: admin_user_path(@user.id), method: :patch do |f| %>
+        <div class="row mt-3">
+          <div class="col">
+            <h5><会員ステータス></h5>
+          </div>
+        </div>
+        <% if flash[:success] %>
+          <div class="row mt-1">
+            <div class="col">
+              <p class="text-success"><%= flash[:success] %></p>
+            </div>
+          </div>
+        <% end %>
+        <% if flash[:alert] %>
+          <div class="row mt-1">
+            <div class="col">
+              <p class="text-danger"><%= flash[:alert] %></p>
+            </div>
+          </div>
+        <% end %>
+        <div class="row mt-2 mb-2">
+          <div class="col">
+            <%= f.radio_button :is_active, :true %> <%= f.label :is_active_true, "有効" %>
+          </div>
+        </div>
+        <div class="row mb-4">
+          <div class="col">
+            <%= f.radio_button :is_active, :false %> <%= f.label :is_actiove_false, "アカウント停止" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <%= f.submit "会員ステータスを保存", class: "btn btn-outline-dark btn-sm" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-6">
+      <div class="row">
+        <div class="col">
+          <h5>&lt;<%= @user.name %>の投稿一覧&gt;</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <%= render 'public/posts/posts_index', posts: @posts %>
+        </div>
+      </div>
+      <div class="pagination d-flex justify-content-center">
+        <%= paginate @comments %>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="row mb-3">
+        <div class="col">
+          <h5>&lt;<%= @user.name %>のコメント一覧&gt;</h5>
+        </div>
+      </div>
+      <% @comments.each do |comment| %>
+        <div class="row">
+          <div class="col">
+            <%= link_to post_path(comment.post_id), class: "link-dark link-underline-opacity-0 link-underline-opacity-100-hover" do %>
+              <div class="row py-2">
+                <div class="col-auto" style="width: 100px">
+                  <%= image_tag comment.post.user.get_profile_image(100, 100) %>
+                </div>
+                <div class="col ms-4">
+                  <div class="container h-100 d-flex flex-column">
+                    <div class="row">
+                      <div class="col fw-bold">
+                        <%= comment.post.user.name %>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <%= comment.post.body %>
+                      </div>
+                    </div>
+                    <% if comment.post.camp_layout.present? %>
+                      <div class="row">
+                        <div class="col-auto">
+                          <div class="template_button template_button_red px-2 mt-2">
+                            タイトル： <strong><%= comment.post.camp_layout.title %></strong> の詳細を見る
+                          </div>
+                        </div>
+                      </div>
+                    <% end %>
+                    <% if comment.post.camp_meal.present? %>
+                      <div class="row">
+                        <div class="col-auto">
+                          <div class="template_button template_button_yellow px-2 mt-2">
+                            料理名： <strong><%= comment.post.camp_meal.name %></strong> の詳細を見る
+                          </div>
+                        </div>
+                      </div>
+                    <% end %>
+                    <% if comment.post.campsite.present? %>
+                      <div class="row">
+                        <div class="col-auto">
+                          <div class="template_button template_button_blue px-2 mt-2">
+                            キャンプ場名： <strong><%= comment.post.campsite.name %></strong> の詳細を見る
+                          </div>
+                        </div>
+                      </div>
+                    <% end %>
+                    <div class="row mt-auto">
+                      <div class="col">
+                        <%= comment.post.created_at %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col offset-1">
+            <%= link_to post_path(comment.post_id), class: "link-dark link-underline-opacity-0 link-underline-opacity-100-hover" do %>
+              <div class="row py-2 border-bottom">
+                <div class="col-auto">
+                  <i class="fa-solid fa-arrow-turn-up" style="display: inline-block; transform: scaleX(-1);"></i>
+                </div>
+                <div class="col-auto" style="width: 50px">
+                  <%= image_tag comment.user.get_profile_image(50, 50) %>
+                </div>
+                <div class="col ms-4">
+                  <div class="container h-100 d-flex flex-column">
+                    <div class="row">
+                      <div class="col fw-bold">
+                        <%= comment.user.name %>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <%= comment.comment %>
+                      </div>
+                      </div>
+                    <div class="row mt-auto">
+                      <div class="col">
+                        <%= comment.created_at %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+      <div class="pagination d-flex justify-content-center">
+        <%= paginate @comments %>
+      </div>
+    </div>
+  </div>
+
+</div>

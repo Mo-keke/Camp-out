@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row my-3">
+    <div class="col">
+      <h5><お問い合わせ詳細></h5>
+    </div>
+  </div>
+
+  <% if @inquiry.user %>
+    <div class="row mb-5">
+      <div class="col-2 d-flex align-items-center">
+        <h5>お問い合わせユーザー：</h5>
+      </div>
+      <div class="col">
+        <div class="row">
+          <div class="col-auto" style="width: 75px;">
+            <%= image_tag @inquiry.user.get_profile_image(75, 75) %>
+          </div>
+          <div class="col ms-4">
+            <div class="container">
+              <div class="row mb-3">
+                <div class="col">
+                  <h5><%= @inquiry.user.name %></h5>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <h6><%= @inquiry.user.introduction %></h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <div class="row mb-3">
+    <div class="col-2">
+      <h5>お問い合わせタイトル：</h5>
+    </div>
+    <div class="col">
+      <h5><%= @inquiry.title %></h5>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-2">
+      <h5>連絡先メールアドレス：</h5>
+    </div>
+    <div class="col">
+      <h6><%= @inquiry.email %></h6>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-2">
+      <h5>お問い合わせ内容：</h5>
+    </div>
+    <div class="col">
+      <h6><%= @inquiry.content %></h6>
+    </div>
+  </div>
+</div>

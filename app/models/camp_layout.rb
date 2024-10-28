@@ -10,6 +10,16 @@ class CampLayout < ApplicationRecord
 
   before_validation :create_post
 
+  def get_camp_layout_images(width, height)
+    camp_layout_images.map do |image|
+      image.variant(resize_to_fill: [width, height]).processed
+    end
+  end
+
+  def first_camp_layout_image(width, height)
+    camp_layout_images.first&.variant(resize_to_fill: [width, height])
+  end
+
   private
 
   def create_post

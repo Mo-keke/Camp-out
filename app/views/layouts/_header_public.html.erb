@@ -13,18 +13,28 @@
             <% end %>
           </li>
           <li>
-            <%= link_to timeline_path, class: "nav-link text-dark text-right" do %>
-              <button class="btn btn-outline-dark">タイムライン</button>
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to mypage_path, class: "nav-link text-dark text-right" do %>
-              <button class="btn btn-outline-dark">マイページ</button>
+            <%= link_to camp_layouts_path, class: "nav-link text-dark text-right" do %>
+              <button class="btn btn-outline-dark"><i class="fa-solid fa-tents"></i>レイアウト</button>
             <% end %>
           </li>
           <li>
-            <%= link_to "#", class: "nav-link text-dark text-right" do %>
-              <button class="btn btn-outline-dark"><i class="fa-regular fa-bell"></i>通知</button>
+            <%= link_to camp_meals_path, class: "nav-link text-dark text-right" do %>
+              <button class="btn btn-outline-dark"><i class="fa-solid fa-utensils"></i>キャンプ飯</button>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to campsites_path, class: "nav-link text-dark text-right" do %>
+              <button class="btn btn-outline-dark"><i class="fa-solid fa-location-dot"></i>キャンプサイト</button>
+            <% end %>
+          </li>
+          <!--<li>-->
+          <!--  <%#= link_to "#", class: "nav-link text-dark text-right" do %>-->
+          <!--    <button class="btn btn-outline-dark"><i class="fa-regular fa-bell"></i>通知</button>-->
+          <!--  <%# end %>-->
+          <!--</li>-->
+          <li class="nav-item">
+            <%= link_to mypage_path, class: "nav-link text-dark text-right" do %>
+              <button class="btn btn-outline-dark">マイページ</button>
             <% end %>
           </li>
           <li>

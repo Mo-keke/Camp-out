@@ -1,2 +1,108 @@
-<h1>Public::CampLayouts#index</h1>
-<p>Find me in app/views/public/camp_layouts/index.html.erb</p>
+<div class="container">
+  <div class="row d-flex justify-content-center mt-2 mb-5">
+    <div class="col-auto mx-auto">
+      <div id="flipbook" class="layout_book">
+      	<div class="cover">
+      	  <div class="layout_book_cover" style="background-image: url('<%= asset_path("camp_layout_book_cover.JPG") %>');"></div>
+      	</div>
+      	<% @camp_layouts.each do |camp_layout| %>
+      	  <div class="page page_odd">
+      	    <div class="layout_image_odd" style="background-image: url('<%= url_for(camp_layout.first_camp_layout_image(570, 380)) %>');"></div>
+      	    <div class="layout_gear">
+      	      <div class="heading"><一押しキャンプギア></div>
+      	      <% if camp_layout.camp_gears.first %>
+        	      <div class="layout_gear_container upper">
+        	        <div class="layout_gear_image">
+        	          <%= image_tag camp_layout.camp_gears.first.get_camp_gear_image(135, 90) %>
+        	        </div>
+        	        <div class="layout_gear_text_field">
+        	          <div class="layout_gear_name">
+        	            <%= camp_layout.camp_gears.first.name %>
+        	          </div>
+        	          <div class="layout_gear_description">
+        	            <%= camp_layout.camp_gears.first.description %>
+        	          </div>
+        	        </div>
+        	      </div>
+              <% end %>
+              <% if camp_layout.camp_gears.second %>
+                <div class="layout_gear_container">
+        	        <div class="layout_gear_image">
+        	          <%= image_tag camp_layout.camp_gears.second.get_camp_gear_image(135, 90) %>
+        	        </div>
+        	        <div class="layout_gear_text_field">
+        	          <div class="layout_gear_name">
+        	            <%= camp_layout.camp_gears.second.name %>
+        	          </div>
+        	          <div class="layout_gear_description">
+        	            <%= camp_layout.camp_gears.second.description %>
+        	          </div>
+        	        </div>
+        	      </div>
+              <% end %>
+      	    </div>
+      	  </div>
+      	  <div class="page page_even">
+      	    <div class="flex">
+      	      <div class="layout_image_even" style="background-image: url('<%= url_for(camp_layout.first_camp_layout_image(570, 380)) %>');"></div>
+        	    <div class="layout_text_field">
+        	      <div class="layout_title">
+        	        <%= camp_layout.title %>
+        	      </div>
+        	      <div class="user">
+        	        <%= image_tag camp_layout.post.user.get_profile_image(50, 50) %>
+        	        <%= camp_layout.post.user.name %>
+        	      </div>
+        	      <div class="layout_description">
+        	        <%= camp_layout.description %>
+        	      </div>
+        	    </div>
+      	    </div>
+      	    <div class="layout_gear">
+      	      <div class="heading"></div>
+      	      <% if camp_layout.camp_gears.third %>
+        	      <div class="layout_gear_container upper">
+        	        <div class="layout_gear_image">
+        	          <%= image_tag camp_layout.camp_gears.third.get_camp_gear_image(135, 90) %>
+        	        </div>
+        	        <div class="layout_gear_text_field">
+        	          <div class="layout_gear_name">
+        	            <%= camp_layout.camp_gears.third.name %>
+        	          </div>
+        	          <div class="layout_gear_description">
+        	            <%= camp_layout.camp_gears.third.description %>
+        	          </div>
+        	        </div>
+        	      </div>
+              <% end %>
+              <% if camp_layout.camp_gears.fourth %>
+        	      <div class="layout_gear_container">
+        	        <div class="layout_gear_image">
+        	          <%= image_tag camp_layout.camp_gears.fourth.get_camp_gear_image(135, 90) %>
+        	        </div>
+        	        <div class="layout_gear_text_field">
+        	          <div class="layout_gear_name">
+        	            <%= camp_layout.camp_gears.fourth.name %>
+        	          </div>
+        	          <div class="layout_gear_description">
+        	            <%= camp_layout.camp_gears.fourth.description %>
+        	          </div>
+        	        </div>
+        	      </div>
+              <% end %>
+      	    </div>
+      	  </div>
+      	<% end %>
+      	<div class="back_cover"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+	$("#flipbook").turn({
+	  width: 930,
+		height: 620,
+	});
+</script>

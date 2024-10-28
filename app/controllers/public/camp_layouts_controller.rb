@@ -2,6 +2,7 @@ class Public::CampLayoutsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
+    @camp_layouts = CampLayout.order(created_at: :desc).limit(10)
   end
 
   def create

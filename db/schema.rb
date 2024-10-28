@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_10_17_064350) do
+ActiveRecord::Schema.define(version: 2024_10_26_090028) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -104,15 +104,16 @@ ActiveRecord::Schema.define(version: 2024_10_17_064350) do
 
   create_table "ingredients", force: :cascade do |t|
     t.integer "camp_meal_id", null: false
-    t.string "ingredient", null: false
+    t.string "name", null: false
     t.string "amount", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "inquiries", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.integer "user_id"
     t.string "title", null: false
+    t.string "email"
     t.text "content", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

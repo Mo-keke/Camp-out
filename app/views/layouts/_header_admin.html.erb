@@ -1,11 +1,16 @@
 <nav class="navbar navbar-expand-lg navbar-light justify-content-center">
   <div class="container">
-    <a class="navbar-brand fw-bold" href="/">Camp-out!</a>
+    <a class="navbar-brand fw-bold" href="/admin">Camp-out!</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <%= link_to admin_top_path, class: "nav-link text-dark text-right" do %>
+            <button class="btn btn-outline-dark">管理者トップ</button>
+          <% end %>
+        </li>
         <li class="nav-item">
           <%= link_to admin_users_path, class: "nav-link text-dark text-right" do %>
             <button class="btn btn-outline-dark">ユーザー管理</button>

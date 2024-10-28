@@ -1,2 +1,59 @@
-<h1>Public::CampMeals#index</h1>
-<p>Find me in app/views/public/camp_meals/index.html.erb</p>
+<div class="container">
+  <div class="row d-flex justify-content-center mt-2 mb-5">
+    <div class="col-auto mx-auto">
+      <div id="flipbook" class="meal_book">
+      	<div class="cover">
+      	  <h5>みんなのキャンプ飯</h5>
+      	</div>
+      	<% @camp_meals.each do |camp_meal| %>
+      	  <div class="page page_odd">
+      	    <div class="meal_image_odd" style="background-image: url('<%= url_for(camp_meal.first_camp_meal_image(570, 380)) %>');"></div>
+      	    <div class="meal_name">
+      	      <%= camp_meal.name %>
+      	    </div>
+      	    <div class="meal_description">
+      	      <%= camp_meal.description %>
+      	    </div>
+      	  </div>
+      	  <div class="page page_even">
+      	    <div class="flex">
+      	      <div class="meal_image_even" style="background-image: url('<%= url_for(camp_meal.first_camp_meal_image(570, 380)) %>');"></div>
+        	    <div class="meal_text_field">
+        	      <div class="user">
+        	        <%= image_tag camp_meal.post.user.get_profile_image(50, 50) %>
+        	        <%= camp_meal.post.user.name %>
+        	      </div>
+        	      <div class="meal_ingredient">
+        	        <h5>材料と分量</h5>
+        	        <% camp_meal.ingredients.each do |ingredient| %>
+        	          <div class="ingredient-item">
+                      <span class="ingredient-name"><%= ingredient.name %></span>
+                      <span class="ingredient-amount"><%= ingredient.amount %></span>
+                    </div>
+        	        <% end %>
+        	      </div>
+        	      <div class="meal_time_required">
+        	        <h5>所要時間</h5>
+        	        <div><%= camp_meal.time_required %> 分</div>
+                </div>
+        	    </div>
+      	    </div>
+      	    <div class="meal_recipe">
+      	      <h5>レシピ</h5>
+      	      <%= safe_join(camp_meal.recipe.split("\n"),tag(:br)) %>
+      	    </div>
+      	  </div>
+      	<% end %>
+      	<div class="back_cover"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+	$("#flipbook").turn({
+	  width: 930,
+		height: 620,
+	});
+</script>

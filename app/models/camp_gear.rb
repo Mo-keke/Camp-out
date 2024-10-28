@@ -8,6 +8,6 @@ class CampGear < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
       camp_gear_image.attach(io: File.open(file_path), filename: 'no_image.jpg', content_type: 'image/jpeg')
     end
-    camp_gear_image.variant(resize_to_limit: [width, height]).processed
+    camp_gear_image.variant(resize_to_fill: [width, height]).processed
   end
 end

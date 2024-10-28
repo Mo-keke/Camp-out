@@ -1,0 +1,215 @@
+@charset "UTF-8"
+
+#flipbook {
+  font-weight: bold;
+}
+
+#flipbook .page_odd {
+  box-shadow: -8px 0 15px -8px #000000 inset;
+}
+
+#flipbook .page_even {
+  box-shadow: 8px 0 15px -8px #000000 inset;
+}
+
+.layout_book .cover, .meal_book .cover, .site_book .cover {
+  background: #222222;
+  color: #FFF;
+}
+
+.layout_book .back_cover, .meal_book .back_cover, .site_book .back_cover {
+  background: #222222;
+  color: #FFF;
+}
+
+.layout_book .page, .meal_book .page, .site_book .page {
+  background: #EEEEEE;
+}
+
+.layout_image_odd, .meal_image_odd {
+  margin: 5px 0 5px 5px;
+  width: 460px;
+  height: 380px;
+  background-size: cover;
+  background-position: left center;
+  box-shadow: -8px 0 15px -8px #000000 inset;
+}
+
+.layout_image_even, .meal_image_even {
+  margin: 5px 5px 5px 0;
+  width: 110px;
+  height: 380px;
+  background-size: cover;
+  background-position: right center;
+  box-shadow: 8px 0 15px -8px #000000 inset;
+}
+
+.layout_text_field {
+  margin: 5px 10px 5px 5px;
+  width: 345px;
+  height: 380px;
+}
+
+.layout_title {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.user {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.layout_gear {
+  margin: 10px;
+  width: 445px;
+  height: 210px;
+}
+
+.layout_gear .heading {
+  width: 445px;
+  height: 15px;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.layout_gear_container {
+  display: flex;
+  width: 445px;
+  height: 90px;
+  gap: 10px
+}
+
+.layout_gear .upper {
+  margin-bottom: 5px
+}
+
+.layout_gear_text_field {
+  margin-left: 10px;
+}
+
+.layout_gear_name {
+  font-size: 18px;
+  border-bottom: 1px solid #000;
+}
+
+.layout_gear_description {
+  font-size: 14px;
+}
+
+.page_odd .flex, .page_even .flex {
+  display: flex;
+}
+
+
+.meal_name {
+  font-size: 30px;
+  margin: 10px;
+}
+
+.meal_description {
+  margin: 0 10px 10px 10px;
+}
+
+.meal_text_field {
+  margin: 10px 10px 5px 5px;
+  width: 345px;
+  height: 375px;
+}
+
+.meal_ingredient {
+  margin-bottom: 20px;
+}
+
+.ingredient-item {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #000;
+  margin: 0 10px 3px 0;
+}
+
+.ingredient-name {
+  text-align: left;
+}
+
+.ingredient-amount {
+  text-align: right;
+}
+
+.meal_time_required {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 10px;
+}
+
+.meal_recipe {
+  margin: 10px;
+  font-size: 14px;
+}
+
+
+.site_top_left {
+  width: 465px;
+  height: 110px;
+  padding: 10px 10px 5px 10px;
+}
+
+.site_left {
+  width: 170px;
+  height: 510px;
+  padding: 5px 5px 10px 10px;
+}
+
+.site_top_right {
+  width: 465px;
+  height: 110px;
+  padding: 10px 10px 5px 10px;
+}
+
+.site_image_odd {
+  margin: 5px 0 5px 5px;
+  width: 290px;
+  height: 500px;
+  background-size: cover;
+  background-position: left center;
+  box-shadow: -8px 0 15px -8px #000000 inset;
+}
+
+.site_image_even {
+  margin: 5px 5px 5px 0;
+  width: 460px;
+  height: 500px;
+  background-size: cover;
+  background-position: right center;
+  box-shadow: 8px 0 15px -8px #000000 inset;
+}
+
+.site_name {
+  font-size: 30px;
+  margin: 10px;
+}
+
+.site_user {
+  margin: 10px 0 20px 10px;
+}
+
+.site_address {
+  display: flex;
+  margin: 20px 0 10px 0;
+}
+
+.site_address h5 {
+  margin: 0 20px 0 10px;
+}
+
+.site_review {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.site_review h5 {
+  margin: 0 20px 0 10px;
+}
