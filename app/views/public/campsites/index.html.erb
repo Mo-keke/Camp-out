@@ -2,8 +2,12 @@
   <div class="row d-flex justify-content-center mt-2 mb-5">
     <div class="col-auto mx-auto">
       <div id="flipbook" class="site_book">
-      	<div class="cover">
-      	  <h5>みんなのキャンプ場</h5>
+      	<div class="cover" style="background-image: url('<%= asset_path("campsite_book_cover.jpg") %>');">
+      	  <h4>
+      	    みんなのイチオシ<br>
+      	    キャンプ場特集！
+      	  </h4>
+      	  <h2><span>月刊</span>CAMPSITE</h2>
       	</div>
       	<% @campsites.each do |campsite| %>
       	  <div class="page page_odd">

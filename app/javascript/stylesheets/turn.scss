@@ -12,14 +12,99 @@
   box-shadow: 8px 0 15px -8px #000000 inset;
 }
 
-.layout_book .cover, .meal_book .cover, .site_book .cover {
-  background: #222222;
+.layout_book .cover {
+  width: 465px;
+  height: 620px;
+  background-size: 465px 620px;
+  background-repeat: no-repeat;
+  box-shadow: 15px 0 15px -8px #000000 inset;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 10px;
+}
+
+.layout_book .cover h2 {
+  font-size: 60px;
   color: #FFF;
+  font-family: "Lilita One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.meal_book .cover {
+  width: 465px;
+  height: 620px;
+  background-size: 465px 620px;
+  background-repeat: no-repeat;
+  box-shadow: 15px 0 15px -8px #000000 inset;
+}
+
+.meal_book .cover h2 {
+  font-size: 60px;
+  font-family: "Potta One", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: -0.25em;
+  -webkit-text-stroke: 2px #FFF;
+  text-stroke: 2px #FFF;
+  text-shadow: 1px 1px 2px black;
+  transform: rotate(-10deg);
+  margin: 180px 0 0 10px;
+}
+
+.site_book .cover {
+  width: 465px;
+  height: 620px;
+  background-size: 465px 620px;
+  background-repeat: no-repeat;
+  box-shadow: 15px 0 15px -8px #000000 inset;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 10px;
+}
+
+.site_book .cover h4 {
+  font-size: 30px;
+  color: #FFF;
+  font-family: "Rampart One", serif;
+  font-weight: 400;
+  font-style: normal;
+  -ms-writing-mode: tb-rl;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  padding: 0 0 15px 15px;
+  text-shadow: 1px 1px 2px black;
+}
+
+.site_book .cover h2 {
+  font-size: 60px;
+  color: #FFF;
+  font-family: "Rampart One", serif;
+  font-weight: 400;
+  font-style: normal;
+  -ms-writing-mode: tb-rl;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  align-self: flex-start;
+  text-shadow: 1px 1px 2px black;
+}
+
+.site_book .cover span {
+  font-size: 20px;
+  color: #FFF;
+  font-family: "Rampart One", serif;
+  font-weight: 400;
+  font-style: normal;
+  text-shadow: 1px 1px 2px black;
+  writing-mode: horizontal-tb;
 }
 
 .layout_book .back_cover, .meal_book .back_cover, .site_book .back_cover {
-  background: #222222;
+  background: #EEEEEE;
   color: #FFF;
+  box-shadow: -8px 0 15px -8px #000000 inset;
 }
 
 .layout_book .page, .meal_book .page, .site_book .page {

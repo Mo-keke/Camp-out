@@ -2,8 +2,8 @@
   <div class="row d-flex justify-content-center mt-2 mb-5">
     <div class="col-auto mx-auto">
       <div id="flipbook" class="meal_book">
-      	<div class="cover">
-      	  <h5>みんなのキャンプ飯</h5>
+      	<div class="cover" style="background-image: url('<%= asset_path("camp_meal_book_cover.jpg") %>');">
+      	  <h2>みんなのキャンプ飯</h2>
       	</div>
       	<% @camp_meals.each do |camp_meal| %>
       	  <div class="page page_odd">
