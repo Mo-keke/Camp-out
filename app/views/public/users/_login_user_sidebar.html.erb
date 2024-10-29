@@ -1,4 +1,4 @@
-<div class="col-2 offset-1 px-2 border-end vh-100">
+<div class="col-2 offset-1 ps-5 pe-2 border-end vh-100">
   <div class="row mt-5 mb-2">
     <div class="col px-0">
       <%= image_tag user.get_profile_image(150, 150) %>
@@ -12,21 +12,21 @@
   <div class="row mb-3">
     <div class="col px-0">
       <%= link_to edit_user_path do %>
-        <button class="btn btn-outline-secondary" style="width: 150px;">プロフィール編集</button>
+        <button class="btn btn-outline-dark" style="width: 150px;">プロフィール編集</button>
       <% end %>
     </div>
   </div>
   <!--<div class="row mb-3">-->
   <!--  <div class="col px-0">-->
   <!--    <%#= link_to timeline_path do %>-->
-  <!--      <button class="btn btn-outline-secondary" style="width: 150px;">タイムライン</button>-->
+  <!--      <button class="btn btn-outline-dark" style="width: 150px;">タイムライン</button>-->
   <!--    <%# end %>-->
   <!--  </div>-->
   <!--</div>-->
   <div class="row mb-3">
     <div class="col px-0">
       <%= link_to book_marks_path do %>
-        <button class="btn btn-outline-secondary" style="width: 150px;">ブックマーク一覧</button>
+        <button class="btn btn-outline-dark" style="width: 150px;">ブックマーク一覧</button>
       <% end %>
     </div>
   </div>

@@ -3,6 +3,7 @@ class Public::BookMarksController < ApplicationController
 
   def index
     @user = current_user
+    @bookmarked_posts = Post.joins(:book_marks).where(book_marks: { user_id: current_user.id }).includes(:book_marks).page(params[:page]).per(20).order(created_at: :desc)
   end
 
   def create
