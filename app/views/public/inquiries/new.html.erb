@@ -1,18 +1,16 @@
 <div class="container">
-  <div class="row mt-3 mb-4">
-    <div class="col">
+  <div class="row mt-3 mb-2">
+    <div class="col-10 offset-1">
       <h5><お問い合わせ></h5>
     </div>
   </div>
-  <% if flash[:alert] %>
-    <div class="rowmb-3">
-      <div class="col">
-        <%= flash[:alert] %>
-      </div>
+  <div class="row">
+    <div class="col-10 offset-1">
+      <%= render 'layouts/error_messages', model: @inquiry %>
     </div>
-  <% end %>
-  <div class="row mb-4">
-    <div class="col">
+  </div>
+  <div class="row mt-2 mb-4">
+    <div class="col-10 offset-1">
       <h5>
         以下のフォームより、お気軽にお問い合わせください。<br>
         お問い合わせいただいた内容につきましては基本返信しておりませんが、返信を要するものにつきましてはご登録いただいているメールアドレスへ3営業日以内にご連絡いたします。（土・日・祝日は、メールによる回答は対応しておりません。）<br>
@@ -23,31 +21,31 @@
   </div>
   <%= form_with model: @inquiry do |f| %>
     <div class="row mb-2">
-      <div class="col-2">
-        <%= f.label :email, "メールアドレス：", class: "form-label" %>
+      <div class="col-3 offset-1">
+        <%= f.label :title, "お問い合わせタイトル：", class: "form-label" %><span class="badge text-bg-success ms-3">必須</span>
       </div>
-      <div class="col-10">
-        <%= f.text_field :email, class: "form-control border-secondary" %>
-      </div>
-    </div>
-    <div class="row mb-2">
-      <div class="col-2">
-        <%= f.label :title, "お問い合わせタイトル：", class: "form-label" %>
-      </div>
-      <div class="col-10">
+      <div class="col-7">
         <%= f.text_field :title, autofocus: true, class: "form-control border-secondary" %>
       </div>
     </div>
-    <div class="row mb-3">
-      <div class="col-2">
-        <%= f.label :content, "お問い合わせ内容：", class: "form-label" %>
+    <div class="row mb-2">
+      <div class="col-3 offset-1">
+        <%= f.label :email, "メールアドレス：", class: "form-label" %><span class="badge text-bg-secondary ms-3">任意</span>
       </div>
-      <div class="col-10">
+      <div class="col-7">
+        <%= f.text_field :email, class: "form-control border-secondary" %>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-3 offset-1">
+        <%= f.label :content, "お問い合わせ内容：", class: "form-label" %><span class="badge text-bg-success ms-3">必須</span>
+      </div>
+      <div class="col-7">
         <%= f.text_area :content, rows: "6", class: "form-control border-secondary" %>
       </div>
     </div>
-    <div class="row">
-      <div class="col offset-2">
+    <div class="row mb-3">
+      <div class="col offset-4">
         <%= f.submit "送信する",  class: "submit_button btn btn-outline-dark" %>
       </div>
     </div>

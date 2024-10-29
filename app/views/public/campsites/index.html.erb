@@ -13,14 +13,18 @@
       	  <div class="page page_odd">
       	    <div class="site_top_left">
       	      <div class="site_name">
-        	      <%= campsite.name %>
+      	        <%= link_to post_path(campsite.post.id), class: "link-dark link-underline-opacity-0 link-underline-opacity-100-hover" do %>
+        	        <%= campsite.name %>
+                <% end %>
         	    </div>
       	    </div>
       	    <div class="flex">
       	      <div class="site_left">
       	        <div class="user site_user">
-        	        <%= image_tag campsite.post.user.get_profile_image(50, 50) %>
-        	        <%= campsite.post.user.name %>
+      	          <%= link_to user_path(campsite.post.user_id), class: "link-dark link-underline-opacity-0 link-underline-opacity-100-hover" do %>
+          	        <%= image_tag campsite.post.user.get_profile_image(50, 50) %>
+          	        <p><%= campsite.post.user.name %></p>
+                  <% end %>
         	      </div>
                 <div class="site_description">
       	          <h5>キャンプ場の概要</h5>

@@ -1,2 +1,51 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="background top_text d-flex flex-column vh-100" style="background-image: url('<%= asset_path("top_image.jpg") %>');">
+  <div class="container">
+    <div class="row my-5">
+      <div class="col">
+        <h1>
+          あなたのキャンプを、ここから。<br>
+          　誰かのキャンプを、あなたから。
+        </h1>
+      </div>
+    </div>
+    <div class="row my-5"></div>
+    <div class="row mt-5">
+      <div class="col ms-5 d-flex align-items-end">
+        <div class="col-2 me-5 text-end">
+          <h5>みんなの投稿を見る</h5>
+        </div>
+        <div class="col">
+          <%= link_to camp_layouts_path, class: "text-light text-right me-3" do %>
+            <button class="btn btn-light"><i class="fa-solid fa-tents"></i>レイアウト</button>
+          <% end %>
+          <%= link_to camp_meals_path, class: "text-light text-right me-3" do %>
+            <button class="btn btn-light"><i class="fa-solid fa-utensils"></i>キャンプ飯</button>
+          <% end %>
+          <%= link_to campsites_path, class: "text-light text-right" do %>
+            <button class="btn btn-light"><i class="fa-solid fa-location-dot"></i>キャンプサイト</button>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col ms-5 d-flex align-items-end">
+        <div class="col-2 me-5 text-end">
+          <h5>投稿する</h5>
+        </div>
+        <div class="col">
+          <%= link_to new_user_session_path, class: "text-light text-right me-3" do %>
+            <button class="btn btn-light">ログイン</button>
+          <% end %>
+          <%= link_to new_user_registration_path, class: "text-light text-right" do %>
+            <button class="btn btn-light">ユーザー登録</button>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer border-top mt-auto">
+    <%= render 'public/homes/footer' %>
+  </div>
+</div>

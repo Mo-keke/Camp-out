@@ -13,9 +13,13 @@ class Public::CampLayoutsController < ApplicationController
     else
       @user = current_user
       @post = Post.new
+      @camp_layout.camp_gears.build if @camp_layout.camp_gears.blank?
       @camp_meal = CampMeal.new
       @camp_meal.ingredients.build
       @campsite = Campsite.new
+      @layout_form_initial_value = "キャンプレイアウトテンプレートを用いて投稿を作成しました！"
+      @meal_form_initial_value = "キャンプ飯テンプレートを用いて投稿を作成しました！"
+      @site_form_initial_value = "キャンプ場テンプレートを用いて投稿を作成しました！"
       flash.now[:alert] = "投稿に失敗しました。"
       render 'public/posts/new'
     end

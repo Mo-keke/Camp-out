@@ -17,7 +17,7 @@
       <div class="swiper-wrapper">
         <% post.camp_meal.camp_meal_images.each do |camp_meal_image| %>
           <div class="swiper-slide">
-            <%= image_tag camp_meal_image, size: "450x300" %>
+            <%= image_tag post.camp_meal.get_camp_meal_image_variant(camp_meal_image, 450, 300) %>
           </div>
         <% end %>
       </div>
@@ -27,16 +27,16 @@
     </div>
   </div>
   <div class="col">
-    <div class="row">
+    <div class="row pe-0">
       <div class="col">
         <h5>材料と分量：</h5>
       </div>
       <% post.camp_meal.ingredients.each do |ingredient| %>
-        <div class="row mb-1">
-          <div class="col">
+        <div class="row mb-1 align-items-center pe-0">
+          <div class="col" style="border-bottom: 1px dashed #444444">
             <%= ingredient.name %>
           </div>
-          <div class="col ms-auto">
+          <div class="col-auto ms-auto me-0" style="border-bottom: 1px dashed #444444">
             <%= ingredient.amount %>
           </div>
         </div>
@@ -44,7 +44,7 @@
     </div>
   </div>
 </div>
-<div class="row">
+<div class="row mb-3">
   <div class="col-auto pe-0">
     <h5>説明：</h5>
   </div>
@@ -52,7 +52,7 @@
     <%=safe_join(post.camp_meal.description.split("\n"),tag(:br))%>
   </div>
 </div>
-<div class="row">
+<div class="row mb-3">
   <div class="col-auto pe-0">
     <h5>レシピ：</h5>
   </div>

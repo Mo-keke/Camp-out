@@ -47,11 +47,15 @@
       	      <div class="layout_image_even" style="background-image: url('<%= url_for(camp_layout.first_camp_layout_image(570, 380)) %>');"></div>
         	    <div class="layout_text_field">
         	      <div class="layout_title">
-        	        <%= camp_layout.title %>
+        	        <%= link_to post_path(camp_layout.post.id), class: "link-dark link-underline-opacity-0 link-underline-opacity-100-hover" do %>
+        	          <%= camp_layout.title %>
+                  <% end %>
         	      </div>
-        	      <div class="user">
-        	        <%= image_tag camp_layout.post.user.get_profile_image(50, 50) %>
-        	        <%= camp_layout.post.user.name %>
+        	      <div class="user layout_user">
+        	        <%= link_to user_path(camp_layout.post.user_id), class: "link-dark link-underline-opacity-0 link-underline-opacity-100-hover" do %>
+          	        <%= image_tag camp_layout.post.user.get_profile_image(50, 50) %>
+          	        <span class="user_name"><%= camp_layout.post.user.name %></span>
+                  <% end %>
         	      </div>
         	      <div class="layout_description">
         	        <%= camp_layout.description %>

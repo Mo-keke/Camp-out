@@ -17,7 +17,7 @@
       <div class="swiper-wrapper">
         <% post.campsite.campsite_images.each do |campsite_image| %>
           <div class="swiper-slide">
-            <%= image_tag campsite_image, size: "720×480" %>
+            <%= image_tag post.campsite.get_campsite_image_variant(campsite_image, 720, 480) %>
           </div>
         <% end %>
       </div>
@@ -27,7 +27,7 @@
     </div>
   </div>
 </div>
-<div class="row">
+<div class="row mb-3">
   <div class="col-auto pe-0">
     <h5>説明：</h5>
   </div>
@@ -35,7 +35,7 @@
     <%=safe_join(post.campsite.description.split("\n"),tag(:br))%>
   </div>
 </div>
-<div class="row">
+<div class="row mb-3">
   <div class="col-auto pe-0">
     <h5>所在地：</h5>
   </div>

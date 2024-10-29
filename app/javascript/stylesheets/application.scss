@@ -8,6 +8,50 @@
   box-sizing: border-box;
 }
 
+.body {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 5%;
+  width: 90%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  background-attachment: fixed;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.main, header, footer {
+  position: relative;
+  z-index: 2;
+}
+
+.background {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.top_text {
+  font-family: "Zen Old Mincho", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #FFF;
+}
+
+.top_text button {
+  width: 150px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
 .template_button {
   border-radius: 5px;
 }

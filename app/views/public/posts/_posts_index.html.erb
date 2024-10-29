@@ -17,7 +17,7 @@
         <%= link_to post_path(post.id), class: "link-dark link-underline-opacity-0 link-underline-opacity-100-hover" do %>
           <div class="row">
             <div class="col">
-              <%= post.body %>
+              <%= safe_join(post.body.split("\n"),tag(:br)) %>
             </div>
           </div>
           <% if post.camp_layout.present? %>
@@ -68,3 +68,7 @@
     <% end %>
   </div>
 <% end %>
+
+<div class="pagination d-flex justify-content-center mb-3">
+  <%= paginate posts %>
+</div>

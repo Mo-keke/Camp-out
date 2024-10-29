@@ -2,13 +2,19 @@
 
 // public/posts/new.html.erbのタブメニュー
 $(document).on('turbolinks:load', function() {
-  $('.tab-contents .tab:not(#tab1)').hide();
+  const savedTabId = localStorage.getItem('activeTabId') || '#tab1';
+  $('.tab-contents .tab').hide();
+  $(savedTabId).show();
+  $('.tab-menu .active').removeClass('active');
+  $('.tab-menu a[href="' + savedTabId + '"]').addClass('active');
   $('.tab-menu a').on('click', function(event) {
     event.preventDefault();
     $('.tab-contents .tab').hide();
     $('.tab-menu .active').removeClass('active');
     $(this).addClass('active');
-    $($(this).attr('href')).show();
+    const targetTabId = $(this).attr('href');
+    $(targetTabId).show();
+    localStorage.setItem('activeTabId', targetTabId);
   });
 });
 

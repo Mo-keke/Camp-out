@@ -15,8 +15,12 @@ class Public::CampMealsController < ApplicationController
       @post = Post.new
       @camp_layout = CampLayout.new
       @camp_layout.camp_gears.build
+      @camp_meal.ingredients.build
       @campsite = Campsite.new
-      flash.now[:alert] = "投稿に失敗しました"
+      @layout_form_initial_value = "キャンプレイアウトテンプレートを用いて投稿を作成しました！"
+      @meal_form_initial_value = "キャンプ飯テンプレートを用いて投稿を作成しました！"
+      @site_form_initial_value = "キャンプ場テンプレートを用いて投稿を作成しました！"
+      flash.now[:alert] = "投稿に失敗しました。"
       render 'public/posts/new'
     end
   end
@@ -24,6 +28,6 @@ class Public::CampMealsController < ApplicationController
   private
 
   def camp_meal_params
-    params.require(:camp_meal).permit(:name, :description, :recipe, :time_required, :body, :user_id, camp_meal_images: [], ingredients_attributes: [:id, :ingredient, :amount, :_destroy])
+    params.require(:camp_meal).permit(:name, :description, :recipe, :time_required, :body, :user_id, camp_meal_images: [], ingredients_attributes: [:id, :name, :amount, :_destroy])
   end
 end

@@ -137,15 +137,18 @@
 
 .layout_title {
   font-size: 30px;
-  margin-bottom: 10px;
+  margin: 5px 0 15px 0;
 }
 
-.user {
+.layout_user a, .meal_user a{
+  font-size: 24px;
+  margin: 0 0 20px 10px;
   display: flex;
   align-items: flex-end;
-  gap: 10px;
-  font-size: 20px;
-  margin-bottom: 20px;
+}
+
+.layout_user .user_name, .meal_user .user_name {
+  padding-left: 10px;
 }
 
 .layout_gear {
@@ -192,7 +195,7 @@
 
 .meal_name {
   font-size: 30px;
-  margin: 10px;
+  margin: 10px 10px 10px 15px;
 }
 
 .meal_description {
@@ -278,7 +281,8 @@
 }
 
 .site_user {
-  margin: 10px 0 20px 10px;
+  font-size: 24px;
+  margin: 10px 10px 20px 10px;
 }
 
 .site_address {

@@ -21,13 +21,22 @@ class Public::PostsController < ApplicationController
       redirect_to post_path(@post.id)
     else
       @user = current_user
+      @camp_layout = CampLayout.new
+      @camp_layout.camp_gears.build
+      @camp_meal = CampMeal.new
+      @camp_meal.ingredients.build
+      @campsite = Campsite.new
+      @layout_form_initial_value = "キャンプレイアウトテンプレートを用いて投稿を作成しました！"
+      @meal_form_initial_value = "キャンプ飯テンプレートを用いて投稿を作成しました！"
+      @site_form_initial_value = "キャンプ場テンプレートを用いて投稿を作成しました！"
+      flash.now[:alert] = "投稿に失敗しました。"
       render 'new'
     end
   end
 
   def index
     @user = current_user
-    @posts = Post.all.order(created_at: :desc)
+    @posts = Post.page(params[:page]).per(20).order(created_at: :desc)
   end
 
   def show
@@ -40,7 +49,7 @@ class Public::PostsController < ApplicationController
   def timeline
     @user = current_user
     # 自分とフォロー中ユーザーの投稿を新着順に表示
-    @posts = Post.where(user_id: [current_user.id, *current_user.following_ids]).order(created_at: :desc)
+    @posts = Post.where(user_id: [current_user.id, *current_user.following_ids]).page(params[:page]).per(20).order(created_at: :desc)
   end
 
   def destroy

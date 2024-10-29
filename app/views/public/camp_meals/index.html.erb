@@ -9,7 +9,9 @@
       	  <div class="page page_odd">
       	    <div class="meal_image_odd" style="background-image: url('<%= url_for(camp_meal.first_camp_meal_image(570, 380)) %>');"></div>
       	    <div class="meal_name">
-      	      <%= camp_meal.name %>
+      	      <%= link_to post_path(camp_meal.post.id), class: "link-dark link-underline-opacity-0 link-underline-opacity-100-hover" do %>
+      	        <%= camp_meal.name %>
+              <% end %>
       	    </div>
       	    <div class="meal_description">
       	      <%= camp_meal.description %>
@@ -19,9 +21,11 @@
       	    <div class="flex">
       	      <div class="meal_image_even" style="background-image: url('<%= url_for(camp_meal.first_camp_meal_image(570, 380)) %>');"></div>
         	    <div class="meal_text_field">
-        	      <div class="user">
-        	        <%= image_tag camp_meal.post.user.get_profile_image(50, 50) %>
-        	        <%= camp_meal.post.user.name %>
+        	      <div class="user meal_user">
+        	        <%= link_to user_path(camp_meal.post.user_id), class: "link-dark link-underline-opacity-0 link-underline-opacity-100-hover" do %>
+          	        <%= image_tag camp_meal.post.user.get_profile_image(50, 50) %>
+          	        <span class="user_name"><%= camp_meal.post.user.name %></span>
+                  <% end %>
         	      </div>
         	      <div class="meal_ingredient">
         	        <h5>材料と分量</h5>

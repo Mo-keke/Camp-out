@@ -3,7 +3,7 @@ class Public::UsersController < ApplicationController
 
   def mypage
     @user = current_user
-    @posts = Post.where(user_id: current_user.id).order(created_at: :desc)
+    @posts = Post.where(user_id: current_user.id).page(params[:page]).per(10).order(created_at: :desc)
   end
 
   def edit
@@ -16,6 +16,7 @@ class Public::UsersController < ApplicationController
       flash[:success] = "変更が正常に保存されました。"
       redirect_to mypage_path
     else
+      flash.now[:alert] = "変更の保存に失敗しました。"
       render "edit"
     end
   end
@@ -23,7 +24,7 @@ class Public::UsersController < ApplicationController
   def show
     @user = current_user
     @target_user = User.find(params[:id])
-    @posts = Post.where(user_id: @target_user.id).order(created_at: :desc)
+    @posts = Post.where(user_id: @target_user.id).page(params[:page]).per(10).order(created_at: :desc)
   end
 
   def unsubscribe

@@ -1,8 +1,10 @@
 <% if model.errors.any? %>
-
-  <ul class="alert alert-warning">
+  <ul class="alert alert-warning px-3">
+    <% if flash[:alert] %>
+      <p class="text-danger fw-bold mb-2"><%= flash[:alert] %></p>
+    <% end %>
     <% model.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
+      <li class="mx-3"><%= message %></li>
     <% end %>
   </ul>
 <% end %>

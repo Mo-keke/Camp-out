@@ -8,11 +8,13 @@
 
     <!-- 投稿詳細を表示 -->
     <div class="col-6 offset-1 mt-4">
-      <div class="row mb-3">
-        <div class="col">
-          <p class="text-success"><%= flash[:success] %></p>
+      <% if flash[:success] %>
+        <div class="row mb-3">
+          <div class="col">
+            <p class="text-success fw-bold"><%= flash[:success] %></p>
+          </div>
         </div>
-      </div>
+      <% end %>
       <div class="row pb-4 mb-4 border-bottom">
         <div class="col-auto" style="width: 100px;">
            <%= link_to user_path(@post.user_id) do %>
@@ -31,7 +33,7 @@
             <%= link_to post_path(@post.id), class: "link-dark link-underline-opacity-0 link-underline-opacity-100-hover" do %>
               <div class="row">
                 <div class="col">
-                  <%= @post.body %>
+                  <%= safe_join(@post.body.split("\n"),tag(:br)) %>
                 </div>
               </div>
             <% end %>
@@ -92,6 +94,7 @@
           <%= render 'public/post_comments/post_comment_index', post_comments: @post_comments %>
         </div>
       </div>
+      <div class="comments-error"></div>
       <%= form_with model: [@post, @post_comment], url: post_post_comments_path(@post.id), method: :post, local: false do |f| %>
         <div class="row mb-3">
           <div class="col">

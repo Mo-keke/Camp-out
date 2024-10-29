@@ -17,7 +17,7 @@
           </div>
           <div class="row">
             <div class="col">
-              <%= post_comment.comment %>
+              <%= safe_join(post_comment.comment.split("\n"),tag(:br)) %>
             </div>
             </div>
           <div class="row mt-auto">

@@ -8,7 +8,10 @@
     <div class="col-6 offset-1 mt-4">
       <div class="row mb-3">
         <div class="col">
-          <span class="fs-5 fw-bold">&lt;<%= @user.name %>のマイページ&gt;</span><span class="ms-5 text-success"><%= flash[:success] %></span>
+          <span class="fs-5 fw-bold">&lt;<%= @user.name %>のマイページ&gt;</span>
+          <% if flash[:success] %>
+            <span class="ms-5 text-success fw-bold"><%= flash[:success] %></span>
+          <% end %>
         </div>
       </div>
       <div class="row pb-2 mb-4 border-bottom">
@@ -24,7 +27,7 @@
             </div>
             <div class="row">
               <div class="col">
-                <h5><%= @user.introduction %></h5>
+                <h5><%= safe_join(@user.introduction.split("\n"),tag(:br)) %></h5>
               </div>
             </div>
           </div>
@@ -38,6 +41,5 @@
       </div>
       <%= render 'public/posts/posts_index', posts: @posts %>
     </div>
-
   </div>
 </div>

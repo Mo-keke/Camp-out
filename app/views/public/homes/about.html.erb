@@ -1,2 +1,51 @@
-<h1>Public::Homes#about</h1>
-<p>Find me in app/views/public/homes/about.html.erb</p>
+<div class="background top_text d-flex flex-column vh-100" style="background-image: url('<%= asset_path("top_image.jpg") %>');">
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col">
+        <h3>当サイトについて</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col ms-3">
+        <h4>当サイトは、キャンプ好きの方々が情報を共有し、素敵なキャンプ体験をサポートすることを目的としています。</h4>
+        <h5>
+          当サイトには投稿機能と閲覧機能があり、投稿機能においてはテンプレートが設けられております。<br>
+          テンプレートを用いて行われた投稿については、本形式で捲って楽しむ閲覧機能が用意されております。<br>
+          当サイトは、他の方が投稿した情報については基本的にどなたでも閲覧することができます。<br>
+          ご自身が投稿する、また投稿に対するコメントをする場合には、ユーザー登録が必要となります。
+        </h5>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col">
+        <h3>プライバシーとセキュリティ</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col ms-3">
+        <h5>当サイトではユーザーの個人情報は厳重に管理されており、第三者への提供は行いません。</h5>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col">
+        <h3>コンタクト</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col ms-3">
+        <h5>ご不明点がございましたら、右下のお問い合わせページからご連絡ください。</h5>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col ms-5">
+        <%= link_to root_path, class: "text-light text-right" do %>
+          <button class="btn btn-light">トップページへ</button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer border-top mt-auto">
+    <%= render 'public/homes/footer' %>
+  </div>
+</div>

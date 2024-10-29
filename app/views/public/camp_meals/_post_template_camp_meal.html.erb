@@ -4,11 +4,11 @@
       <%= render 'layouts/error_messages', model: f.object %>
     </div>
 
-    <%= f.label :body, "投稿文", class: "form-label" %> 　　※投稿文のみがタイムラインに表示され、テンプレートの内容は投稿詳細ページに表示されます。
+    <%= f.label :body, "投稿文", class: "form-label" %><span class="badge text-bg-success ms-3">必須</span>　※投稿文のみがタイムラインに表示され、テンプレートの内容は投稿詳細ページに表示されます。
     <%= f.text_area :body, value: @meal_form_initial_value, rows: "4", placeholder: "投稿内容を入力してください。", class: "body_form form-control border-secondary" %>
     <div class="row mb-3">
       <div class="col">
-        <%= f.label :camp_meal_images, "キャンプ飯の写真", class: "form-label" %>
+        <%= f.label :camp_meal_images, "キャンプ飯の写真", class: "form-label" %><span class="badge text-bg-success ms-3">必須</span>　※1枚以上4枚まで。本型閲覧機能では1枚目の写真のみ表示されます。
         <div class="image_container">
           <div class="create_file_field meal_create_file_field">
             <%= f.label :camp_meal_images do %>
@@ -40,19 +40,19 @@
 
     <div class="row mb-3">
       <div class="col">
-        <%= f.label :name, "料理名", class: "form-label" %>
+        <%= f.label :name, "料理名", class: "form-label" %><span class="badge text-bg-success ms-3">必須</span>
         <%= f.text_field :name, placeholder: "キャンプ飯の名前", class: "form-control border-secondary" %>
       </div>
     </div>
     <div class="row mb-3">
       <div class="col">
-        <%= f.label :description, "説明", class: "form-label" %>
+        <%= f.label :description, "説明", class: "form-label" %><span class="badge text-bg-success ms-3">必須</span>
         <%= f.text_area :description, rows: "4", placeholder: "ここにキャンプ飯の説明（おすすめポイントなど）を記述します。", class: "form-control border-secondary" %>
       </div>
     </div>
     <div class="row">
       <div class="ingredient_container col">
-        <p class="ingredient_label">材料と分量</p>
+        <p class="ingredient_label">材料と分量<span class="badge text-bg-success ms-3">必須</span></p>
         <%= f.fields_for :ingredients do |ingredient_form| %>
           <%= render 'public/ingredients/ingredient_forms', f: ingredient_form %>
         <% end %>
@@ -63,13 +63,13 @@
     </div>
     <div class="row mb-3">
       <div class="col">
-        <%= f.label :recipe, "レシピ", class: "form-label" %>
+        <%= f.label :recipe, "レシピ", class: "form-label" %><span class="badge text-bg-success ms-3">必須</span>
         <%= f.text_area :recipe, rows: "6", placeholder: "ここにレシピを記述します。", class: "form-control border-secondary" %>
       </div>
     </div>
-    <div class="row mb-3">
+    <div class="row mb-4">
       <div class="col-4">
-        <%= f.label :time_required, "所要時間", class: "form-label" %>
+        <%= f.label :time_required, "所要時間", class: "form-label" %><span class="badge text-bg-success ms-3">必須</span>
         <div class="input-group">
           <%= f.text_field :time_required, placeholder: "所要時間", class: "form-control border-secondary rounded" %><span class="my-auto ms-2">分</span>
         </div>

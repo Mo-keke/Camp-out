@@ -23,6 +23,7 @@
           <div class="tab-contents">
             <div id="tab1" class="tab">
               <%= form_with model: @post do |f| %>
+                <%= render 'layouts/error_messages', model: @post %>
                 <%= f.label :body, "投稿文", class: "form-label" %>
                 <%= f.text_area :body, rows: "6", placeholder: "投稿文を入力してください。", class: "body_form form-control border-secondary" %>
                 <%= f.submit "投稿する", class: "submit_button btn btn-outline-primary" %>

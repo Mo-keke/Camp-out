@@ -22,14 +22,26 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
-  validates :name, presence: true, length: {maximum: 32}
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP, message: "が無効です" }
+  validates :name, presence: true, length: {minimum: 2, maximum: 16}
   validates :introduction, length: {maximum: 256}
+  validate  :validate_profile_image
 
   def get_profile_image(width, height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/no_profile_image.JPG')
       profile_image.attach(io: File.open(file_path), filename: 'no_profile_image.JPG', content_type: 'image/jpeg')
     end
-    profile_image.variant(resize_to_limit: [width, height]).processed
+    profile_image.variant(resize_to_fill: [width, height]).processed
+  end
+
+  private
+
+  def validate_profile_image
+    if profile_image.attached? && !profile_image.content_type.in?(%w(image/jpeg image/png))
+      errors.add(:profile_image, "はJPEGまたはPNG形式でなければなりません。")
+    elsif profile_image.attached? && profile_image.blob.byte_size > 5.megabytes
+      errors.add(:profile_image, "サイズが5MBを超えるものは添付できません。")
+    end
   end
 end

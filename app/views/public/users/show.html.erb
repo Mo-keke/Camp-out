@@ -26,7 +26,7 @@
             </div>
             <div class="row">
               <div class="col">
-                <h5><%= @target_user.introduction %></h5>
+                <h5><%= safe_join(@target_user.introduction.split("\n"),tag(:br)) %></h5>
               </div>
             </div>
           </div>
