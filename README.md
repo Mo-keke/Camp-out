@@ -22,7 +22,7 @@
 - 他キャンパーとSNSを通じて交流を図りたいとき。
 ​
 ## 設計書
-- ![ER図](images/ER図.png)
+- ![ER図](app/assets/images/ER図.png)
 ​
 ## 開発環境
 - OS：Linux(CentOS)
