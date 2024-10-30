@@ -2,7 +2,7 @@ class Public::PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def new
-    @user = current_user
+    @user = User.includes(profile_image_attachment: { blob: :variant_records }).find(current_user.id)
     @post = Post.new
     @camp_layout = CampLayout.new
     @camp_layout.camp_gears.build
@@ -20,7 +20,7 @@ class Public::PostsController < ApplicationController
       flash[:success] = "投稿に成功しました。"
       redirect_to post_path(@post.id)
     else
-      @user = current_user
+      @user = User.includes(profile_image_attachment: { blob: :variant_records }).find(current_user.id)
       @camp_layout = CampLayout.new
       @camp_layout.camp_gears.build
       @camp_meal = CampMeal.new
@@ -35,12 +35,17 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @user = current_user
-    @posts = Post.page(params[:page]).per(20).order(created_at: :desc)
+    @user = User.includes(profile_image_attachment: { blob: :variant_records }).find(current_user.id)
+    @posts = Post.includes(:camp_layout, :camp_meal, :campsite, :book_marks)
+                 .order(created_at: :desc)
+                 .page(params[:page])
+                 .per(20)
+
   end
 
   def show
     @user = current_user
+    
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
     @post_comments = PostComment.where(post_id: @post.id)

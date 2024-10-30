@@ -2,8 +2,11 @@ class Public::UsersController < ApplicationController
   before_action :authenticate_user!, except: [:show]
 
   def mypage
-    @user = current_user
-    @posts = Post.where(user_id: current_user.id).page(params[:page]).per(10).order(created_at: :desc)
+    @user = User.includes(profile_image_attachment: { blob: :variant_records }).find(current_user.id)
+    @posts = @user.posts.includes(:camp_layout, :camp_meal, :campsite, :book_marks)
+                        .order(created_at: :desc)
+                        .page(params[:page])
+                        .per(10)
   end
 
   def edit
