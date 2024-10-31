@@ -2,7 +2,12 @@ class Public::CampsitesController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
-    @campsites = Campsite.order(created_at: :desc).limit(10)
+    @campsites = Campsite.includes(
+                  post: :user,
+                  campsite_images_attachments: :blob
+                )
+                .order(created_at: :desc)
+                .limit(10)
   end
 
   def create

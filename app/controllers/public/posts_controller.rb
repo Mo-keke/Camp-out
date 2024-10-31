@@ -35,20 +35,18 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @user = User.includes(profile_image_attachment: { blob: :variant_records }).find(current_user.id)
+    @user = User.includes(profile_image_attachment: { blob: :variant_records }).find(current_user.id) if current_user
     @posts = Post.includes(:camp_layout, :camp_meal, :campsite, :book_marks)
                  .order(created_at: :desc)
                  .page(params[:page])
                  .per(20)
-
   end
 
   def show
-    @user = current_user
-    
-    @post = Post.find(params[:id])
+    @user = User.includes(profile_image_attachment: { blob: :variant_records }).find(current_user.id)
+    @post = Post.includes(:camp_layout, :camp_meal, :campsite, :book_marks).find(params[:id])
     @post_comment = PostComment.new
-    @post_comments = PostComment.where(post_id: @post.id)
+    @post_comments = @post.post_comments.includes(:user)
   end
 
   def timeline

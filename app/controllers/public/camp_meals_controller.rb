@@ -2,7 +2,13 @@ class Public::CampMealsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
-    @camp_meals = CampMeal.order(created_at: :desc).limit(10)
+    @camp_meals = CampMeal.includes(
+                    :ingredients,
+                    post: :user,
+                    camp_meal_images_attachments: :blob
+                  )
+                  .order(created_at: :desc)
+                  .limit(10)
   end
 
   def create

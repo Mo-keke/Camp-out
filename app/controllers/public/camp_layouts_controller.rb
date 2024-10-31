@@ -2,7 +2,14 @@ class Public::CampLayoutsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
-    @camp_layouts = CampLayout.order(created_at: :desc).limit(10)
+    @camp_layouts = CampLayout.includes(
+                      :camp_gears,
+                      post: :user,
+                      camp_layout_images_attachments: :blob,
+                      camp_gears: { camp_gear_image_attachment: :blob }
+                    )
+                    .order(created_at: :desc)
+                    .limit(10)
   end
 
   def create
