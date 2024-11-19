@@ -43,7 +43,7 @@ class Public::PostsController < ApplicationController
   end
 
   def show
-    @user = User.includes(profile_image_attachment: { blob: :variant_records }).find(current_user.id)
+    @user = User.includes(profile_image_attachment: { blob: :variant_records }).find(current_user.id) if current_user
     @post = Post.includes(:camp_layout, :camp_meal, :campsite, :book_marks).find(params[:id])
     @post_comment = PostComment.new
     @post_comments = @post.post_comments.includes(:user)
