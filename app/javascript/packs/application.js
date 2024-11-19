@@ -17,6 +17,8 @@ import "../script.js";
 import "../stylesheets/application";
 import "../stylesheets/post_new";
 import "../stylesheets/post_show";
+import "../stylesheets/top";
+import "../stylesheets/user";
 import "../stylesheets/turn";
 // import "popper.js";
 // import "bootstrap";

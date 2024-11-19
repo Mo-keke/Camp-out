@@ -1,7 +1,7 @@
-<div class="col-2 offset-1 ps-5 pe-2 border-end vh-100">
+<div class="col-2 offset-1 ps-xl-5 pe-2 border-end vh-100">
   <div class="row mt-5 mb-2">
-    <div class="col px-0">
-      <%= image_tag user.get_profile_image(150, 150) %>
+    <div class="sidebar_profile_image_container col px-0">
+      <%= image_tag user.get_profile_image(150, 150), class: "sidebar_profile_image" %>
     </div>
   </div>
   <div class="row mb-4">
@@ -10,35 +10,35 @@
     </div>
   </div>
   <div class="row mb-3">
-    <div class="col px-0">
+    <div class="col px-0 mx-0">
       <%= link_to edit_user_path do %>
         <button class="btn btn-outline-dark" style="width: 150px;">プロフィール編集</button>
       <% end %>
     </div>
   </div>
   <!--<div class="row mb-3">-->
-  <!--  <div class="col px-0">-->
+  <!--  <div class="col px-0 mx-0">-->
   <!--    <%#= link_to timeline_path do %>-->
   <!--      <button class="btn btn-outline-dark" style="width: 150px;">タイムライン</button>-->
   <!--    <%# end %>-->
   <!--  </div>-->
   <!--</div>-->
   <div class="row mb-3">
-    <div class="col px-0">
+    <div class="col px-0 mx-0">
       <%= link_to book_marks_path do %>
         <button class="btn btn-outline-dark" style="width: 150px;">ブックマーク一覧</button>
       <% end %>
     </div>
   </div>
   <div class="row mb-3">
-    <div class="col px-0">
+    <div class="col px-0 mx-0">
       <%= link_to new_post_path do %>
         <button class="btn btn-primary" style="width: 150px;">新規投稿する</button>
       <% end %>
     </div>
   </div>
   <div class="row mb-3">
-    <div class="col px-0">
+    <div class="col px-0 mx-0">
       <%= link_to unsubscribe_path do %>
         <button class="btn btn-outline-danger" style="width: 150px;">退会する</button>
       <% end %>

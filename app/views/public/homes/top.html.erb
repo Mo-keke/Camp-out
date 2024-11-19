@@ -1,51 +1,54 @@
-<div class="background top_text d-flex flex-column vh-100" style="background-image: url('<%= asset_path("top_image.jpg") %>');">
-  <div class="container">
-    <div class="row my-5">
-      <div class="col">
-        <h1>
-          あなたのキャンプを、ここから。<br>
-          　誰かのキャンプを、あなたから。
-        </h1>
-      </div>
+<div class="top_text container-fruid mx-2 mx-sm-5">
+  <div class="row my-5">
+    <div class="top_logo_container col">
+      <h1 class="top_logo">
+        あなたのキャンプを、ここから。<br>
+        <span class="top_logo_bottom">誰かのキャンプを、あなたから。</span>
+      </h1>
     </div>
-    <div class="row my-5"></div>
-    <div class="row mt-5">
-      <div class="col ms-5 d-flex align-items-end">
-        <div class="col-2 me-5 text-end">
-          <h5>みんなの投稿を見る</h5>
-        </div>
-        <div class="col">
-          <%= link_to camp_layouts_path, class: "text-light text-right me-3" do %>
+  </div>
+  <div class="row my-2 my-sm-5"></div>
+  <div class="row">
+    <div class="col ms-md-5 d-flex align-items-end flex-wrap">
+      <div class="col-12 col-lg-3 col-xl-2 me-lg-5 text-center text-md-start text-lg-end">
+        <h5 class="button_logo mb-4 mb-md-3 mb-lg-2 ">みんなの投稿を見る</h5>
+      </div>
+      <div class="col d-flex flex-column flex-md-row text-center">
+        <div class="mb-2 mb-md-0 me-md-3">
+          <%= link_to camp_layouts_path, class: "text-light text-right" do %>
             <button class="btn btn-light"><i class="fa-solid fa-tents"></i>レイアウト</button>
           <% end %>
-          <%= link_to camp_meals_path, class: "text-light text-right me-3" do %>
+        </div>
+        <div class="mb-2 mb-md-0 me-md-3">
+          <%= link_to camp_meals_path, class: "text-light text-right" do %>
             <button class="btn btn-light"><i class="fa-solid fa-utensils"></i>キャンプ飯</button>
           <% end %>
+        </div>
+        <div class="mb-2 mb-md-0">
           <%= link_to campsites_path, class: "text-light text-right" do %>
             <button class="btn btn-light"><i class="fa-solid fa-location-dot"></i>キャンプサイト</button>
           <% end %>
         </div>
-
       </div>
     </div>
-    <div class="row mt-3">
-      <div class="col ms-5 d-flex align-items-end">
-        <div class="col-2 me-5 text-end">
-          <h5>投稿する</h5>
-        </div>
-        <div class="col">
-          <%= link_to new_user_session_path, class: "text-light text-right me-3" do %>
+  </div>
+  <div class="row mt-5 mt-lg-3">
+    <div class="col ms-md-5 d-flex align-items-end flex-wrap">
+      <div class="col-12 col-lg-3 col-xl-2 me-lg-5 text-center text-md-start text-lg-end">
+        <h5 class="button_logo mb-4 mb-md-3 mb-lg-2 ">投稿する</h5>
+      </div>
+      <div class="col d-flex flex-column flex-md-row text-center">
+        <div class="mb-2 mb-md-0 me-md-3">
+          <%= link_to new_user_session_path, class: "text-light text-right" do %>
             <button class="btn btn-light">ログイン</button>
           <% end %>
+        </div>
+        <div class="mb-2 mb-md-0 me-md-3">
           <%= link_to new_user_registration_path, class: "text-light text-right" do %>
             <button class="btn btn-light">ユーザー登録</button>
           <% end %>
         </div>
       </div>
     </div>
-  </div>
-
-  <div class="footer border-top mt-auto">
-    <%= render 'public/homes/footer' %>
   </div>
 </div>

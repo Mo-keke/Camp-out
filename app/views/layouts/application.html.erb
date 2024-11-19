@@ -19,13 +19,16 @@
   </head>
 
   <% if @public_homes %>
-    <body class="d-flex flex-column vh-100">
+    <body class="d-flex flex-column vh-100" style="background-image: url('<%= asset_path("top_image.jpg") %>');">
       <main class="mb-auto">
         <%= yield %>
       </main>
+      <footer class="border-top mt-auto">
+        <%= render 'public/homes/footer' %>
+      </footer>
     </body>
   <% else %>
-    <body class="body d-flex flex-column vh-100" style="background-image: url('<%= asset_path("top_image.jpg") %>');">
+    <body class="d-flex flex-column vh-100" style="background-image: url('<%= asset_path("top_image.jpg") %>');">
       <div class="overlay"></div>
       <header class="border-bottom">
         <% if admin_signed_in? %>
@@ -34,7 +37,7 @@
           <%= render 'layouts/header_public' %>
         <% end %>
       </header>
-      <main class="main mb-auto">
+      <main class="mb-auto">
         <%= yield %>
       </main>
       <footer class="border-top">
