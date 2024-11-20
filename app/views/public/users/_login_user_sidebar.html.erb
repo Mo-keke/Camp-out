@@ -1,46 +1,29 @@
-<div class="col-2 offset-1 ps-xl-5 pe-2 border-end vh-100">
-  <div class="row mt-5 mb-2">
-    <div class="sidebar_profile_image_container col px-0">
-      <%= image_tag user.get_profile_image(150, 150), class: "sidebar_profile_image" %>
-    </div>
-  </div>
-  <div class="row mb-4">
-    <div class="col px-0">
-      <h3 style="width: 150px;"><%= user.name %></h3>
-    </div>
-  </div>
-  <div class="row mb-3">
-    <div class="col px-0 mx-0">
-      <%= link_to edit_user_path do %>
-        <button class="btn btn-outline-dark" style="width: 150px;">プロフィール編集</button>
+<div class="col-2 col-lg-3 pe-0 border-end vh-100 d-flex flex-column">
+  <div class="w-100">
+    <div class="sidebar-profile-container mt-5 mb-3 w-100 d-flex justify-content-center">
+      <%= link_to mypage_path, class: "no_underline text-center" do %>
+        <%= image_tag user.get_profile_image(150, 150), class: "sidebar_profile_image border border-secondary border-2 rounded" %>
       <% end %>
     </div>
-  </div>
-  <!--<div class="row mb-3">-->
-  <!--  <div class="col px-0 mx-0">-->
-  <!--    <%#= link_to timeline_path do %>-->
-  <!--      <button class="btn btn-outline-dark" style="width: 150px;">タイムライン</button>-->
-  <!--    <%# end %>-->
-  <!--  </div>-->
-  <!--</div>-->
-  <div class="row mb-3">
-    <div class="col px-0 mx-0">
-      <%= link_to book_marks_path do %>
-        <button class="btn btn-outline-dark" style="width: 150px;">ブックマーク一覧</button>
-      <% end %>
+    <div class="mb-4 w-100 d-flex justify-content-center">
+      <h3 class="sidebar_name d-none d-lg-block"><%= user.name %></h3>
     </div>
-  </div>
-  <div class="row mb-3">
-    <div class="col px-0 mx-0">
-      <%= link_to new_post_path do %>
-        <button class="btn btn-primary" style="width: 150px;">新規投稿する</button>
+    <div class="d-flex flex-column align-items-center">
+      <%= link_to edit_user_path, class: "no_underline" do %>
+        <button class="sidebar_button btn btn-outline-dark mb-3 d-none d-lg-block"><i class="fa-regular fa-user"></i>　プロフィール編集</button>
+        <i class="icon fa-regular fa-user fa-2x mb-4 d-block d-lg-none text-secondary"></i>
       <% end %>
-    </div>
-  </div>
-  <div class="row mb-3">
-    <div class="col px-0 mx-0">
-      <%= link_to unsubscribe_path do %>
-        <button class="btn btn-outline-danger" style="width: 150px;">退会する</button>
+      <%= link_to book_marks_path, class: "no_underline" do %>
+        <button class="sidebar_button btn btn-outline-dark mb-3 d-none d-lg-block"><i class="fa-regular fa-bookmark"></i>　ブックマーク一覧</button>
+        <i class="icon fa-regular fa-bookmark fa-2x mb-4 d-block d-lg-none text-secondary"></i>
+      <% end %>
+      <%= link_to new_post_path, class: "no_underline" do %>
+        <button class="sidebar_button btn btn-primary mb-3 d-none d-lg-block"><i class="fa-solid fa-plus"></i>　新規投稿する</button>
+        <i class="icon_blue fa-solid fa-plus fa-2x mb-4 d-block d-lg-none text-light bg-primary rounded-circle"></i>
+      <% end %>
+      <%= link_to unsubscribe_path, class: "no_underline" do %>
+        <button class="sidebar_button btn btn-outline-danger d-none d-lg-block"><i class="fa-solid fa-user"></i>　退会する</button>
+        <i class="icon fa-solid fa-user fa-2x mb-4 d-block d-lg-none text-danger"></i>
       <% end %>
     </div>
   </div>

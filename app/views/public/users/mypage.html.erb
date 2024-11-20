@@ -1,45 +1,47 @@
-<div class="container-fruid">
+<div class="container">
   <div class="row">
 
     <!-- 自身のユーザー情報を表示するサイドバー -->
     <%= render 'public/users/login_user_sidebar', user: @user %>
 
     <!-- ユーザープロフィール・自身の投稿を表示 -->
-    <div class="col-6 offset-1 mt-4">
-      <div class="row mb-3">
-        <div class="col">
-          <span class="fs-5 fw-bold">&lt;<%= @user.name %>のマイページ&gt;</span>
-          <% if flash[:success] %>
-            <span class="ms-5 text-success fw-bold"><%= flash[:success] %></span>
-          <% end %>
+    <div class="col-10 col-lg-9 ps-0 mt-4">
+      <div class="col-11 offset-1">
+        <div class="row mb-1 mb-md-2 mb-xl-3">
+          <div class="col p-0">
+            <span class="heading fs-5 fw-bold">&lt;<%= @user.name %>のマイページ&gt;</span>
+            <% if flash[:success] %>
+              <span class="ms-5 text-success fw-bold"><%= flash[:success] %></span>
+            <% end %>
+          </div>
         </div>
-      </div>
-      <div class="row pb-2 mb-4 border-bottom">
-        <div class="col-auto" style="width: 200px;">
-          <%= image_tag @user.get_profile_image(200, 200) %>
-        </div>
-        <div class="col ms-4">
-          <div class="container">
-            <div class="row mb-3">
-              <div class="col">
-                <h3><%= @user.name %></h3>
+        <div class="row pb-2 mb-4 border-bottom">
+          <div class="col-auto p-0">
+            <%= image_tag @user.get_profile_image(200, 200), class: "main_profile_image border border-secondary border-2 rounded" %>
+          </div>
+          <div class="col p-0 ms-md-2 ms-xl-4">
+            <div class="container">
+              <div class="row mb-1 mb-md-2 mb-xl-3">
+                <div class="col">
+                  <h3 class="main_user_name mb-0"><%= @user.name %></h3>
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <h5><%= safe_join((@user.introduction || "").split("\n"), tag(:br)) %></h5>
+              <div class="row">
+                <div class="col">
+                  <h5 class="introduction mb-0"><%= safe_join((@user.introduction || "").split("\n"), tag(:br)) %></h5>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-
-      <div class="row mb-3">
-        <div class="col">
-          <h5><投稿一覧></h5>
+        <div class="row mb-1 mb-md-2 mb-xl-3">
+          <div class="col">
+            <h5 class="heading"><投稿一覧></h5>
+          </div>
         </div>
+        <%= render 'public/posts/posts_index', posts: @posts %>
       </div>
-      <%= render 'public/posts/posts_index', posts: @posts %>
     </div>
+
   </div>
 </div>

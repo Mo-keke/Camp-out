@@ -2,6 +2,7 @@
 
 @charset "UTF-8";
 @import "top";
+@import "user";
 
 * {
   margin: 0;
@@ -31,6 +32,8 @@ body {
 
 main, header, footer {
   position: relative;
+  width: 100%;
+  padding: 0 5% 0 5%;
   z-index: 2;
 }
 

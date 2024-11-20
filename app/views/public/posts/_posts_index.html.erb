@@ -1,29 +1,29 @@
 <% posts.each do |post| %>
   <div class="row py-2 border-bottom">
-    <div class="col-auto" style="width: 100px">
+    <div class="col-auto p-0">
       <%= link_to user_path(post.user_id) do %>
-        <%= image_tag post.user.get_profile_image(100, 100) %>
+        <%= image_tag post.user.get_profile_image(100, 100), class: "post_profile_image border border-secondary border-2 rounded" %>
       <% end %>
     </div>
-    <div class="col ms-4">
+    <div class="col p-0 ms-md-2 ms-xl-4">
       <div class="container h-100 d-flex flex-column">
         <div class="row">
-          <div class="col fw-bold">
+          <div class="col">
             <%= link_to user_path(post.user_id), class: "link-dark link-underline-opacity-0 link-underline-opacity-100-hover" do %>
-              <%= post.user.name %>
+              <p class="post_user_name fw-bold m-0"><%= post.user.name %></p>
             <% end %>
           </div>
         </div>
         <%= link_to post_path(post.id), class: "link-dark link-underline-opacity-0 link-underline-opacity-100-hover" do %>
           <div class="row">
             <div class="col">
-              <%= safe_join(post.body.split("\n"),tag(:br)) %>
+              <p class="post_text m-0"><%= safe_join(post.body.split("\n"),tag(:br)) %></p>
             </div>
           </div>
           <% if post.camp_layout.present? %>
             <div class="row">
               <div class="col-auto">
-                <div class="template_button template_button_red px-2 mt-2">
+                <div class="post_text template_button template_button_red px-2 mt-1 mt-sm-2">
                   タイトル： <strong><%= post.camp_layout.title %></strong> の詳細を見る
                 </div>
               </div>
@@ -32,7 +32,7 @@
           <% if post.camp_meal.present? %>
             <div class="row">
               <div class="col-auto">
-                <div class="template_button template_button_yellow px-2 mt-2">
+                <div class="post_text template_button template_button_yellow px-2 mt-1 mt-sm-2">
                   料理名： <strong><%= post.camp_meal.name %></strong> の詳細を見る
                 </div>
               </div>
@@ -41,7 +41,7 @@
           <% if post.campsite.present? %>
             <div class="row">
               <div class="col-auto">
-                <div class="template_button template_button_blue px-2 mt-2">
+                <div class="post_text template_button template_button_blue px-2 mt-1 mt-sm-2">
                   キャンプ場名： <strong><%= post.campsite.name %></strong> の詳細を見る
                 </div>
               </div>
@@ -50,7 +50,7 @@
         <% end %>
         <div class="row mt-auto">
           <div class="col">
-            <%= post.created_at %>
+            <p class="post_text m-0"><%= post.created_at %></p>
           </div>
         </div>
       </div>
